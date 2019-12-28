@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/views/home/Home_view.dart';
+import 'package:flutter_app/views/loadmore/Test.dart';
+import 'package:flutter_app/views/login/login_contact.dart';
+import 'package:flutter_app/views/login/login_presenter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginApp extends StatelessWidget {
@@ -10,6 +12,7 @@ class LoginApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: 'Login',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       home: LoginPage(),
     );
@@ -24,14 +27,17 @@ class LoginPage extends StatefulWidget {
   }
 }
 
-class _LoginPageSate extends State<LoginPage> {
+class _LoginPageSate extends State<LoginPage> implements LoginContact {
   TextEditingController cntrlEmail = TextEditingController();
   TextEditingController cntrlPassword = TextEditingController();
+
+  LoginPreseneter _preseneter;
 
   @override
   void initState() {
     // TODO: implement initState
     SystemChrome.setEnabledSystemUIOverlays([]);
+    _preseneter = LoginPreseneter(this);
     super.initState();
   }
 
@@ -156,7 +162,7 @@ class _LoginPageSate extends State<LoginPage> {
                           fontSize: 16.0);
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                            return HomePage();
+                        return MyListviewLoadmore();
                       }));
                     },
                     child: new Container(
@@ -183,5 +189,16 @@ class _LoginPageSate extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void onLoginSuccess() {
+    // TODO: implement onLoginSuccess
+
+  }
+
+  @override
+  void showError(String message) {
+    // TODO: implement showError
   }
 }
