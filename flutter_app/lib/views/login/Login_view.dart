@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/views/loadmore/Test.dart';
+import 'package:flutter_app/views/home/Tab_home_view.dart';
+import 'package:flutter_app/views/loadmore/api.dart';
+import 'package:flutter_app/views/loadmore/grid.dart' as prefix1;
+import 'package:flutter_app/views/loadmore/tab.dart';
+import 'package:flutter_app/views/loadmore/test.dart' as prefix0;
 import 'package:flutter_app/views/login/login_contact.dart';
 import 'package:flutter_app/views/login/login_presenter.dart';
+import 'package:flutter_app/views/navigation/Home_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginApp extends StatelessWidget {
@@ -103,7 +108,7 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                         boxShadow: [
                           BoxShadow(color: Colors.black12, blurRadius: 5)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
                       controller: cntrlEmail,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -127,7 +132,7 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                         boxShadow: [
                           BoxShadow(color: Colors.black12, blurRadius: 5)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
                       controller: cntrlPassword,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -162,7 +167,7 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                           fontSize: 16.0);
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return MyListviewLoadmore();
+                        return HomePage();
                       }));
                     },
                     child: new Container(
@@ -194,7 +199,6 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
   @override
   void onLoginSuccess() {
     // TODO: implement onLoginSuccess
-
   }
 
   @override

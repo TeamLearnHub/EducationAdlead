@@ -6,7 +6,6 @@ import 'package:flutter_app/service/Network_service.dart';
 import 'package:flutter_app/util/Preferences.dart';
 import 'package:flutter_app/util/Request_exception.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:http/http.dart' as http;
 
 abstract class UserRepository {
   Observable<void> login(String email, String password);
