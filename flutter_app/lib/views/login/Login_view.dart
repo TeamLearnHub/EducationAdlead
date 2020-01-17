@@ -1,15 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/views/home/Tab_home_view.dart';
-import 'package:flutter_app/views/loadmore/api.dart';
-import 'package:flutter_app/views/loadmore/grid.dart' as prefix1;
-import 'package:flutter_app/views/loadmore/tab.dart';
-import 'package:flutter_app/views/loadmore/test.dart' as prefix0;
 import 'package:flutter_app/views/login/login_contact.dart';
 import 'package:flutter_app/views/login/login_presenter.dart';
 import 'package:flutter_app/views/navigation/Home_view.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginApp extends StatelessWidget {
   @override
@@ -157,14 +151,14 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                   Spacer(),
                   InkWell(
                     onTap: () {
-                      Fluttertoast.showToast(
-                          msg: "This is Center Short Toast " + cntrlEmail.text,
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIos: 1,
-                          backgroundColor: Colors.red,
-                          textColor: Colors.white,
-                          fontSize: 16.0);
+//                      Fluttertoast.showToast(
+//                          msg: "This is Center Short Toast " + cntrlEmail.text,
+//                          toastLength: Toast.LENGTH_SHORT,
+//                          gravity: ToastGravity.CENTER,
+//                          timeInSecForIos: 1,
+//                          backgroundColor: Colors.red,
+//                          textColor: Colors.white,
+//                          fontSize: 16.0);
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return HomePage();
