@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/views/loadmore/api.dart';
+import 'package:flutter_app/views/loadmore/tab.dart';
 import 'package:flutter_app/views/login/login_contact.dart';
 import 'package:flutter_app/views/login/login_presenter.dart';
 import 'package:flutter_app/views/navigation/Home_view.dart';
+import 'package:flutter_app/views/test/futureBuilder.dart';
+import 'package:flutter_app/views/test/test.dart';
 
 class LoginApp extends StatelessWidget {
   @override
@@ -161,7 +165,7 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
 //                          fontSize: 16.0);
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return HomePage();
+                        return MyAppHome();
                       }));
                     },
                     child: new Container(

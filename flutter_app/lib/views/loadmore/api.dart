@@ -20,18 +20,19 @@ class CallApi extends StatelessWidget {
         home: PostsPage(),
       ),
       drawer: new Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: Text("Ttem 1"),
-              trailing: Icon(Icons.arrow_forward),
-            ),
-            ListTile(
-              title: Text("Item 2"),
-              trailing: Icon(Icons.arrow_forward),
-            ),
-          ],
-        ),
+        child: ListView.builder(itemBuilder: (context, index) {}),
+//        child: ListView(
+//          children: <Widget>[
+//            ListTile(
+//              title: Text("Ttem 1"),
+//              trailing: Icon(Icons.arrow_forward),
+//            ),
+//            ListTile(
+//              title: Text("Item 2"),
+//              trailing: Icon(Icons.arrow_forward),
+//            ),
+//          ],
+//        ),
       ),
     );
   }

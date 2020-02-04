@@ -4,4 +4,5 @@ class ApiEndPoint {
   static const String USERS = REQRES_URL + "/api/users";
   static const String RANDOM_USERS = "https://randomuser.me/api/";
   static const String DEMO = "https://api.punkapi.com/v2/beers";
+
 }
