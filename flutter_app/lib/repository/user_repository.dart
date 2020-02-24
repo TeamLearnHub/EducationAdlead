@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_app/Api_endpoint.dart';
+import 'package:flutter_app/api_endpoint.dart';
 import 'package:flutter_app/di/injection.dart';
 import 'package:flutter_app/service/Network_service.dart';
 import 'package:flutter_app/util/Preferences.dart';

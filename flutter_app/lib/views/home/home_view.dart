@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/comment/comment_view.dart';
+import 'package:flutter_app/views/download/download_view.dart';
 import 'package:flutter_app/views/setting/setting_view.dart';
 
 class HomeApp extends StatelessWidget {
@@ -96,7 +98,12 @@ class _HomePageState extends State<HomePage> {
                   height: 50.0,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return downloadApp();
+                    }));
+                  },
                   child: Row(
                     children: <Widget>[
                       Container(

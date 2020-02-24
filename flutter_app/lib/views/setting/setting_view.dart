@@ -19,6 +19,7 @@ class SettingPage extends StatefulWidget {
     // TODO: implement createState
     return _SettingPageSate();
   }
+
 }
 
 class _SettingPageSate extends State<SettingPage> {
