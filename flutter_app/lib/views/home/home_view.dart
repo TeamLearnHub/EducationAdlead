@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/comment/comment_view.dart';
-import 'package:flutter_app/views/download/download_view.dart';
+import 'package:flutter_app/views/classes/all_classes.dart';
 import 'package:flutter_app/views/setting/setting_view.dart';
+import 'package:flutter_app/views/test/test.dart';
+import 'package:http/http.dart' as prefix0;
 
 class HomeApp extends StatelessWidget {
   @override
@@ -99,9 +100,21 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
+//                    String url =
+//                        "https://login.salesforce.com/services/oauth2/token";
+//                    prefix0.post(url, body: {
+//                      "grant_type": "authorization_code",
+//                      "client_id": "some_client_id",
+//                      "redirect_uri": "some_redirect_uri",
+//                      "code": "some_code_generated_by_salesforce_login",
+//                      "client_secret": "some_client_secret",
+//                    }).then((response) {
+//                      //--handle response
+//                      print(response.body);
+//                    });
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return downloadApp();
+                      return ClassesApp();
                     }));
                   },
                   child: Row(
