@@ -1,46 +1,61 @@
-import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_app/views/classes/tabRegister.dart';
 import 'package:flutter_app/views/download/download_view.dart';
 import 'package:video_player/video_player.dart';
 
-class CourseDetail extends StatefulWidget {
+class ClassesDetailApp extends StatelessWidget {
   @override
-  _courseDetail createState() {
-    // TODO: implement createState
-    return _courseDetail();
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      home: ClassesDetailPage(),
+    );
   }
 }
 
-class _courseDetail extends State<CourseDetail> {
-  int _indexSelected = 0;
-  TabController controller;
-  final List<String> option = [
-    'Discuss',
-    'Intro',
-    'Question',
-  ];
+class ClassesDetailPage extends StatefulWidget {
+  @override
+  ClassesDetailState createState() {
+    // TODO: implement createState
+    return ClassesDetailState();
+  }
+}
 
-  final _pageoption = [TestVideoApp(), GiaodichApp(), GiaodichApp()];
+class ClassesDetailState extends State<ClassesDetailPage> {
+  TargetPlatform _platform;
+  VideoPlayerController _videoPlayerController1;
+  VideoPlayerController _videoPlayerController2;
   ChewieController _chewieController;
+  int _indexSelected = 0;
 
   @override
   void initState() {
     // TODO: implement initState
-
-    super.initState();
+    _videoPlayerController1 = VideoPlayerController.network(
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
+    _videoPlayerController2 = VideoPlayerController.network(
+        'https://www.sample-videos.com/video123/mp4/480/asdasdas.mp4');
     _chewieController = ChewieController(
-        videoPlayerController: VideoPlayerController.network(
-            'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
-        aspectRatio: 16 / 9,
-        autoPlay: false,
-        autoInitialize: true,
-        looping: true,
-        errorBuilder: (context, errorMessage) {
-          return Center(
-            child: Text(errorMessage),
-          );
-        });
+      videoPlayerController: _videoPlayerController1,
+      aspectRatio: 3 / 2,
+      autoPlay: true,
+      looping: true,
+    );
+    super.initState();
   }
+
+  TabController controller;
+  final List<String> option = [
+    'ĐĂNG KÝ',
+    'GIỚI THIỆU',
+    'BÀI GIẢNG',
+  ];
+  final List<Icons> icons = [
+  ];
+
+  final _pageoption = [TabRegisterApp(), GiaodichApp(), GiaodichApp()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -63,7 +78,7 @@ class _courseDetail extends State<CourseDetail> {
         title: Container(
           padding: EdgeInsets.only(right: 35),
           alignment: Alignment.center,
-          child: Text("Course Detail"),
+          child: Text("Tất cả khoá học"),
         ),
       ),
       body: Container(
@@ -74,18 +89,6 @@ class _courseDetail extends State<CourseDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  "Kỹ năng quản lý thời gian",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Text("Giảng viên - Nguyễn Huy Anh"),
-                Row(
-                  children: <Widget>[
-                    Expanded(flex: 1, child: Text("Ngày bắt đầu: 01/01/2020")),
-                    Expanded(flex: 1, child: Text("Ngày kết thúc: 01/05/2020")),
-                  ],
-                ),
-                Padding(padding: EdgeInsets.only(top: 10)),
                 Chewie(
                   controller: _chewieController,
                 ),
@@ -119,6 +122,7 @@ class _courseDetail extends State<CourseDetail> {
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 1),
                                     ),
+
                                   ],
                                 )));
                       }),
@@ -137,8 +141,10 @@ class _courseDetail extends State<CourseDetail> {
   @override
   void dispose() {
     // TODO: implement dispose
-    super.dispose();
-    controller.dispose();
+    _videoPlayerController1.dispose();
+    _videoPlayerController2.dispose();
     _chewieController.dispose();
+    super.dispose();
+    super.dispose();
   }
 }

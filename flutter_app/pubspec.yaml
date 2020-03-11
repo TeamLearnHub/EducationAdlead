@@ -32,6 +32,8 @@ dependencies:
   logger: any
   flutter_calendar_carousel: ^1.4.10
   flutter_cache_manager: ^0.3.2
+  chewie: any
+  video_player: any
 module:
   androidX: true
 dev_dependencies:
