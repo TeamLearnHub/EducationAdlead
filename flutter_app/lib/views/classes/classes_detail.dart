@@ -1,6 +1,8 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/classes/tabIntroduction.dart';
+import 'package:flutter_app/views/classes/tabLession.dart';
 import 'package:flutter_app/views/classes/tabRegister.dart';
 import 'package:flutter_app/views/download/download_view.dart';
 import 'package:video_player/video_player.dart';
@@ -11,6 +13,7 @@ class ClassesDetailApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       home: ClassesDetailPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -55,7 +58,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   final List<Icons> icons = [
   ];
 
-  final _pageoption = [TabRegisterApp(), GiaodichApp(), GiaodichApp()];
+  final _pageoption = [TabRegisterApp(),TabIntroductionApp(), TabLessionApp()];
 
   void _onItemTapped(int index) {
     setState(() {
