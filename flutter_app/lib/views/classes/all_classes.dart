@@ -1,10 +1,10 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/service/Webservice.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
-import 'package:flutter_app/views/download/download_view.dart';
-import 'package:flutter_app/views/test/test.dart';
 
 class ClassesApp extends StatelessWidget {
   @override
@@ -15,121 +15,6 @@ class ClassesApp extends StatelessWidget {
       home: ClassesPage(),
     );
   }
-}
-
-Widget _buildListItem(List<ClassesModel> data) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Padding(
-        padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Kỹ năng quản lý',
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 18.00),
-          ),
-        ),
-      ),
-      ListView.builder(
-        padding: EdgeInsets.only(top: 8.0),
-        itemBuilder: (context, index) {
-          return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return ClassesDetailApp();
-                      }));
-                    },
-                    child: Center(
-                      child: Image.network(data[index]?.avatar,
-                          height: 120, width: 120),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return ClassesDetailApp();
-                      }));
-                    },
-                    onLongPress: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return ClassesDetailApp();
-                      }));
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 10.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Text('Kỹ năng quản lý thời gian',
-                                  style: TextStyle(color: Colors.black))
-                            ],
-                          ),
-                          SizedBox(height: 10.0),
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                child: Icon(Icons.person),
-                              ),
-                              Text('30M',
-                                  style: TextStyle(fontWeight: FontWeight.bold))
-                            ],
-                          ),
-                          SizedBox(height: 10.0),
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                margin: const EdgeInsets.only(bottom: 8.0),
-                                child: Icon(Icons.home),
-                              ),
-                              Text('05 Lớp',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Container(
-                                  margin: const EdgeInsets.only(
-                                      left: 25.0, right: 25.0)),
-                              Container(
-                                child: Icon(Icons.closed_caption),
-                              ),
-                              Text('07 ngày 18 giờ',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ));
-        },
-        itemCount: 4,
-        shrinkWrap: true,
-        // todo comment this out and check the result
-        physics:
-            ClampingScrollPhysics(), // todo comment this out and check the result
-      ),
-    ],
-  );
 }
 
 Widget _buildListItem1() {
@@ -466,12 +351,12 @@ class ClassesPageState extends State<ClassesPage> {
     }
   }
 
-  Widget _buildMainContent(List<ClassesModel> list) {
+  Widget _buildMainContent() {
     return CustomScrollView(
       slivers: <Widget>[
         SliverList(
           delegate: SliverChildListDelegate([
-            Visibility(child: _buildListItem(list), visible: visibilitydkm),
+            Visibility(child: projectWidget(), visible: visibilitydkm),
             Visibility(child: _buildListItem1(), visible: visibilitydccc),
             Visibility(child: _buildListItem2(), visible: visibilitycccc),
             Visibility(child: _buildListItem3(), visible: visibilitycccd),
@@ -491,114 +376,153 @@ class ClassesPageState extends State<ClassesPage> {
         });
   }
 
-//futurebuilder
+  List<ClassesModel> parseClasses(String responseBody) {
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    _listClasses = parsed
+        .map<ClassesModel>((json) => ClassesModel.fromJson(json))
+        .toList();
+    return _listClasses;
+  }
+
+  Future<List<ClassesModel>> fetchClasses() async {
+    final response =
+        await http.get('http://demo4855049.mockable.io/gethotvideo');
+    if (response.statusCode == 200) {
+      return parseClasses(response.body);
+    } else {
+      throw Exception('Unable to fetch products from the REST API');
+    }
+  }
+
   Widget projectWidget() {
     return FutureBuilder(
-      builder: (context, projectSnap) {
-        if (projectSnap.connectionState == ConnectionState.none &&
-            projectSnap.hasData == null) {
-          //print('project snapshot data is: ${projectSnap.data}');
-          return Container();
-        } else {
-          return ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              // ClassesModel project = projectSnap.data[index];
-              //print(project.avatar);
-              return Column(
-                children: <Widget>[
-                  Padding(
-                    padding:
-                        EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Kỹ năng quản lý',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.00),
+        future: fetchClasses(),
+        builder: (BuildContext context, AsyncSnapshot projectSnap) {
+          print(projectSnap.data);
+          if (projectSnap.connectionState == ConnectionState.none &&
+              projectSnap.hasData == null) {
+            return GestureDetector(
+              child: Center(
+                child: Image.network(
+                    "https://dzbbmecpa0hd2.cloudfront.net/video/avatar/2019/04/11/14/1554966002_de58c8a6be7d1046.jpg",
+                    height: 120,
+                    width: 120),
+              ),
+            );
+          }
+          return Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Kỹ năng quản lý ',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.00),
+                  ),
+                ),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                itemCount: projectSnap?.data?.length ?? 0,
+                itemBuilder: (context, index) {
+                  ClassesModel project = projectSnap?.data[index];
+                  print(" -------" + project.avatar);
+                  return Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
                       ),
-                    ),
-                  ),
-                  ListView.builder(
-                    padding: EdgeInsets.only(top: 8.0),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 8.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailApp();
+                              }));
+                            },
+                            child: Center(
+                              child: Image.network(project?.avatar,
+                                  height: 120, width: 120),
+                            ),
                           ),
-                          child: Row(
-                            children: <Widget>[
-                              Center(
-                                child:
-                                    Image.network("", height: 120, width: 120),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(bottom: 10.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Text('Kỹ năng quản lý thời gian',
-                                            style:
-                                                TextStyle(color: Colors.black))
-                                      ],
-                                    ),
-                                    SizedBox(height: 10.0),
-                                    Row(
-                                      children: <Widget>[
-                                        Container(
-                                          child: Icon(Icons.person),
-                                        ),
-                                        Text('30M',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
-                                    ),
-                                    SizedBox(height: 10.0),
-                                    Row(
-                                      children: <Widget>[
-                                        Container(
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailApp();
+                              }));
+                            },
+                            onLongPress: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailApp();
+                              }));
+                            },
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.only(top: 15.0, left: 12.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Text('Kỹ năng quản lý thời gian',
+                                          style: TextStyle(color: Colors.black))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Icon(Icons.person),
+                                      ),
+                                      Text('30M',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        margin:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: Icon(Icons.home),
+                                      ),
+                                      Text('05 Lớp',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      Container(
                                           margin: const EdgeInsets.only(
-                                              bottom: 8.0),
-                                          child: Icon(Icons.home),
-                                        ),
-                                        Text('05 Lớp',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                        Container(
-                                            margin: const EdgeInsets.only(
-                                                left: 25.0, right: 25.0)),
-                                        Container(
-                                          child: Icon(Icons.closed_caption),
-                                        ),
-                                        Text('07 ngày 18 giờ',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ));
-                    },
-                    itemCount: 4,
-                    shrinkWrap: true,
-                    // todo comment this out and check the result
-                    physics:
-                        ClampingScrollPhysics(), // todo comment this out and check the result
-                  ),
-                ],
-              );
-            },
+                                              left: 25.0, right: 25.0)),
+                                      Container(
+                                        child: Icon(Icons.closed_caption),
+                                      ),
+                                      Text('07 ngày 18 giờ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ));
+                },
+              )
+            ],
           );
-        }
-      },
-      future: this._getClasses(),
-    );
+        });
   }
 
   @override
@@ -606,6 +530,7 @@ class ClassesPageState extends State<ClassesPage> {
     // TODO: implement initState
     super.initState();
     _getClasses();
+    fetchClasses();
   }
 
   @override
@@ -645,6 +570,6 @@ class ClassesPageState extends State<ClassesPage> {
             ),
           ],
         ),
-        body: _buildMainContent(_listClasses));
+        body: _buildMainContent());
   }
 }

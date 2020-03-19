@@ -5,6 +5,7 @@ import 'package:flutter_app/views/classes/tabIntroduction.dart';
 import 'package:flutter_app/views/classes/tabLession.dart';
 import 'package:flutter_app/views/classes/tabRegister.dart';
 import 'package:flutter_app/views/download/download_view.dart';
+import 'package:flutter_app/views/test/test.dart';
 import 'package:video_player/video_player.dart';
 
 class ClassesDetailApp extends StatelessWidget {
