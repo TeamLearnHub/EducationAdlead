@@ -170,9 +170,6 @@ Widget _buildListItem2() {
                             Text('05 Lớp',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Container(
-                                margin: const EdgeInsets.only(
-                                    left: 25.0, right: 25.0)),
-                            Container(
                               child: Icon(Icons.closed_caption),
                             ),
                             Text('07 ngày 18 giờ',
@@ -503,7 +500,7 @@ class ClassesPageState extends State<ClassesPage> {
                                               fontWeight: FontWeight.bold)),
                                       Container(
                                           margin: const EdgeInsets.only(
-                                              left: 25.0, right: 25.0)),
+                                              left: 10.0, right: 10.0)),
                                       Container(
                                         child: Icon(Icons.closed_caption),
                                       ),
@@ -536,40 +533,44 @@ class ClassesPageState extends State<ClassesPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Color(0xFFfbe3ee),
-          leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-                size: 23,
-                color: Colors.black,
+    return WillPopScope(
+        onWillPop: () {
+          Navigator.pop(context);
+        },
+        child: Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Color(0xFFfbe3ee),
+              leading: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    size: 23,
+                    color: Colors.black,
+                  ),
+                  onPressed: () => Navigator.pop(context)),
+              title: Container(
+                padding: EdgeInsets.only(right: 35),
+                alignment: Alignment.center,
+                child: Text("Tất cả các khoá học"),
               ),
-              onPressed: () => Navigator.pop(context)),
-          title: Container(
-            padding: EdgeInsets.only(right: 35),
-            alignment: Alignment.center,
-            child: Text("Tất cả các khoá học"),
-          ),
-          actions: <Widget>[
-            PopupMenuButton<String>(
-              icon: Icon(
-                Icons.more_vert,
-                color: Colors.black87,
-              ),
-              itemBuilder: (BuildContext context) {
-                return PopupMenu.popup.map((String choice) {
-                  return PopupMenuItem<String>(
-                    value: choice,
-                    child: Text(choice),
-                  );
-                }).toList();
-              },
-              onSelected: choice,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: Colors.black87,
+                  ),
+                  itemBuilder: (BuildContext context) {
+                    return PopupMenu.popup.map((String choice) {
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice),
+                      );
+                    }).toList();
+                  },
+                  onSelected: choice,
+                ),
+              ],
             ),
-          ],
-        ),
-        body: _buildMainContent());
+            body: _buildMainContent()));
   }
 }

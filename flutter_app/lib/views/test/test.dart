@@ -1,48 +1,115 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
-class MyHome extends StatefulWidget {
+class MyAppTest extends StatelessWidget {
   @override
-  _MyHomeState createState() => new _MyHomeState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
 }
 
-class _MyHomeState extends State<MyHome> {
-  ScrollController controller;
-  List<String> items = new List.generate(100, (index) => 'Hello $index');
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  String nextPage = "https://swapi.co/api/people";
+
+  ScrollController _scrollController = new ScrollController();
+
+  bool isLoading = false;
+
+  List names = new List();
+  final dio = new Dio();
+
+  void _getMoreData() async {
+    if (!isLoading) {
+      setState(() {
+        isLoading = true;
+      });
+
+      final response = await dio.get(nextPage);
+      print(response);
+      List tempList = new List();
+      nextPage = response.data['next'];
+      for (int i = 0; i < response.data['results'].length; i++) {
+        tempList.add(response.data['results'][i]);
+      }
+
+      setState(() {
+        isLoading = false;
+        names.addAll(tempList);
+      });
+    }
+  }
 
   @override
   void initState() {
+    this._getMoreData();
     super.initState();
-    controller = new ScrollController()..addListener(_scrollListener);
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        _getMoreData();
+      }
+    });
   }
 
   @override
   void dispose() {
-    controller.removeListener(_scrollListener);
+    _scrollController.dispose();
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Scrollbar(
-        child: new ListView.builder(
-          controller: controller,
-          itemBuilder: (context, index) {
-            return new Text(items[index]);
-          },
-          itemCount: items.length,
+  Widget _buildProgressIndicator() {
+    return new Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Center(
+        child: new Opacity(
+          opacity: isLoading ? 1.0 : 00,
+          child: new CircularProgressIndicator(),
         ),
       ),
     );
   }
 
-  void _scrollListener() {
-    print(controller.position.extentAfter);
-    if (controller.position.extentAfter < 500) {
-      setState(() {
-        items.addAll(new List.generate(42, (index) => 'Inserted $index'));
-      });
-    }
+  Widget _buildList() {
+    return ListView.builder(
+//+1 for progressbar
+      itemCount: names.length + 1,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == names.length) {
+          return _buildProgressIndicator();
+        } else {
+          return new ListTile(
+            title: Text((names[index]['name'])),
+            onTap: () {
+              print(names[index]);
+            },
+          );
+        }
+      },
+      controller: _scrollController,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Pagination"),
+      ),
+      body: Container(
+        child: _buildList(),
+      ),
+      resizeToAvoidBottomPadding: false,
+    );
   }
 }

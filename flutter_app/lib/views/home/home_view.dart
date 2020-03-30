@@ -29,48 +29,48 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return SettingApp();
-                }));
-              }),
-          title: const Text('Xin chào Hoàng Văn Trưởng'),
-          actions: <Widget>[
-            Stack(
-              children: <Widget>[
-                IconButton(
-                    icon: const Icon(Icons.notifications), onPressed: () {}),
-                Container(
-                  width: 30,
-                  height: 30,
-                  alignment: Alignment.topLeft,
-                  margin: EdgeInsets.only(top: 5),
-                  child: Container(
-                    width: 15,
-                    height: 15,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xffc32c37),
-                        border: Border.all(color: Colors.white, width: 1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: Center(
-                        child: Text(
-                          '5',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
+//        appBar: AppBar(
+//          leading: IconButton(
+//              icon: const Icon(Icons.menu),
+//              onPressed: () {
+//                Navigator.of(context)
+//                    .push(MaterialPageRoute(builder: (context) {
+//                  return SettingApp();
+//                }));
+//              }),
+//          title: const Text('Xin chào Hoàng Văn Trưởng'),
+//          actions: <Widget>[
+//            Stack(
+//              children: <Widget>[
+//                IconButton(
+//                    icon: const Icon(Icons.notifications), onPressed: () {}),
+//                Container(
+//                  width: 30,
+//                  height: 30,
+//                  alignment: Alignment.topLeft,
+//                  margin: EdgeInsets.only(top: 5),
+//                  child: Container(
+//                    width: 15,
+//                    height: 15,
+//                    decoration: BoxDecoration(
+//                        shape: BoxShape.circle,
+//                        color: Color(0xffc32c37),
+//                        border: Border.all(color: Colors.white, width: 1)),
+//                    child: Padding(
+//                      padding: const EdgeInsets.all(0.0),
+//                      child: Center(
+//                        child: Text(
+//                          '5',
+//                          style: TextStyle(fontSize: 10),
+//                        ),
+//                      ),
+//                    ),
+//                  ),
+//                )
+//              ],
+//            )
+//          ],
+//        ),
         body: Container(
           child: SingleChildScrollView(
             child: Column(
@@ -78,26 +78,26 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 80.0,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 5.0, right: 5.0),
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(2)),
-                      border: Border.all(color: Colors.tealAccent, width: 4.0)),
-                  child: TextFormField(
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                        hintStyle: TextStyle(fontSize: 17),
-                        hintText: 'Tìm kiếm khoá học',
-                        suffixIcon: Icon(Icons.search),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(5)),
-                  ),
-                ),
-                SizedBox(
-                  height: 50.0,
-                ),
+//                Container(
+//                  margin: const EdgeInsets.only(left: 5.0, right: 5.0),
+//                  height: 50,
+//                  decoration: BoxDecoration(
+//                      color: Colors.white,
+//                      borderRadius: BorderRadius.all(Radius.circular(2)),
+//                      border: Border.all(color: Colors.tealAccent, width: 4.0)),
+//                  child: TextFormField(
+//                    textAlign: TextAlign.left,
+//                    decoration: InputDecoration(
+//                        hintStyle: TextStyle(fontSize: 17),
+//                        hintText: 'Tìm kiếm khoá học',
+//                        suffixIcon: Icon(Icons.search),
+//                        border: InputBorder.none,
+//                        contentPadding: EdgeInsets.all(5)),
+//                  ),
+//                ),
+//                SizedBox(
+//                  height: 50.0,
+//                ),
                 GestureDetector(
                   onTap: () {
 //                    String url =

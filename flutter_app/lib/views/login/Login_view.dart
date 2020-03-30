@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/views/home/home_tab.dart';
 import 'package:flutter_app/views/home/home_view.dart';
 import 'package:flutter_app/views/login/login_contact.dart';
 import 'package:flutter_app/views/login/login_presenter.dart';
@@ -151,17 +152,9 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                   Spacer(),
                   InkWell(
                     onTap: () {
-//                      Fluttertoast.showToast(
-//                          msg: "This is Center Short Toast " + cntrlEmail.text,
-//                          toastLength: Toast.LENGTH_SHORT,
-//                          gravity: ToastGravity.CENTER,
-//                          timeInSecForIos: 1,
-//                          backgroundColor: Colors.red,
-//                          textColor: Colors.white,
-//                          fontSize: 16.0);
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return HomeApp();
+                        return HomeTabApp();
                       }));
                     },
                     child: new Container(

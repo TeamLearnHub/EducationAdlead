@@ -59,7 +59,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   final List<Icons> icons = [
   ];
 
-  final _pageoption = [TabRegisterApp(),TabIntroductionApp(), TabLessionApp()];
+  final _pageoption = [TabRegisterApp(),TabIntroductionApp(), MyAppTest()];
 
   void _onItemTapped(int index) {
     setState(() {
