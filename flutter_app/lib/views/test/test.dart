@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -10,6 +11,7 @@ class MyAppTest extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -100,14 +102,88 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  var listClasses = [
+    'Tất cả các khoá học',
+    'khoá học của tôi',
+    'lộ trình học tập',
+    'đề thi',
+    'lịch học sắp tới',
+    'kết quả học tập',
+    'họp trực tuyến'
+  ];
+  bool a = true;
+  bool b = true;
+  bool c = true;
+  bool d = true;
+
+  var currentListClasses = 'Tất cả các khoá học';
+
+  void testSelect(String value) {
+    if (value == "Tất cả các khoá học") {
+      setState(() {
+        a = true;
+        b = true;
+        c = true;
+        d = true;
+      });
+    } else if (value == "khoá học của tôi") {
+      setState(() {
+        a = false;
+        b = false;
+        c = false;
+        d = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Pagination"),
-      ),
       body: Container(
-        child: _buildList(),
+        child: Column(
+          children: <Widget>[
+            Container(
+                padding: EdgeInsets.only(left: 20, right: 10),
+                margin: EdgeInsets.only(top: 30, left: 20, right: 20),
+                height: MediaQuery.of(context).size.height / 15,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.grey[200]),
+                child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                        value: currentListClasses,
+                        isExpanded: true,
+                        hint: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Tất cả khoá học')),
+                        items: listClasses.map((String value) {
+                          return new DropdownMenuItem<String>(
+                              child: new Text(value), value: value);
+                        }).toList(),
+                        onChanged: (String value) {
+                          setState(() {
+                            this.currentListClasses = value;
+                            testSelect(value);
+                            print(value);
+                          });
+                        }))),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('Tất cả các khoá học'), visible: a),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('khoá học của tôi'), visible: b),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('lộ trình học tập'), visible: c),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('đề thi'), visible: d),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('lịch học sắp tới'), visible: true),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('kết quả học tập'), visible: true),
+            SizedBox(height: 20.0),
+            Visibility(child: Text('họp trực tuyến'), visible: true),
+            SizedBox(height: 20.0),
+          ],
+        ),
       ),
       resizeToAvoidBottomPadding: false,
     );

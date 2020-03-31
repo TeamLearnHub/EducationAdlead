@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/views/classes/all_classes.dart';
 import 'package:flutter_app/views/home/home_view.dart';
 import 'package:flutter_app/views/loadmore/tab.dart';
+import 'package:flutter_app/views/test/test.dart';
 
 class HomeTabApp extends StatelessWidget {
   @override
@@ -29,7 +30,7 @@ class HomeTabState extends State<HomeTabPage> {
     HomeApp(),
     ClassesApp(),
     HomeScreen(),
-    Center(child: Text('Profile')),
+    MyAppTest(),
     Center(child: Text('Profile')),
   ];
 
@@ -70,51 +71,6 @@ class HomeTabState extends State<HomeTabPage> {
             ],
           )
         ],
-      ),
-      drawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 50.0),
-            Text('Danh mục khoá học',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0)),
-            SizedBox(height: 30.0),
-            Container(
-//              decoration: const BoxDecoration(
-//                  border: Border(
-//                      bottom:
-//                      BorderSide(width: 4.0, color: Color(0xFF000000)))),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ClassesApp();
-                  }));
-                },
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin: const EdgeInsets.only(left: 15.0, right: 10.0),
-                      child: Icon(Icons.settings),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        'Tất cả',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16.0),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
