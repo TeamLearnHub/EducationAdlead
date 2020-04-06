@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -138,8 +137,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/open.png');
+    var image = new Image(image: assetsImage, width: 200.0, height: 200.0);
+
     return Scaffold(
       body: Container(
+          child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
@@ -168,13 +171,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                         }))),
             SizedBox(height: 20.0),
-            Visibility(child: Text('Tất cả các khoá học'), visible: a),
+            Visibility(child: Text('Tất cả các khoá học'), visible: true),
             SizedBox(height: 20.0),
-            Visibility(child: Text('khoá học của tôi'), visible: b),
+            Visibility(child: Text('khoá học của tôi'), visible: true),
             SizedBox(height: 20.0),
-            Visibility(child: Text('lộ trình học tập'), visible: c),
+            Visibility(child: Text('lộ trình học tập'), visible: true),
             SizedBox(height: 20.0),
-            Visibility(child: Text('đề thi'), visible: d),
+            Visibility(child: Text('đề thi'), visible: true),
             SizedBox(height: 20.0),
             Visibility(child: Text('lịch học sắp tới'), visible: true),
             SizedBox(height: 20.0),
@@ -182,10 +185,92 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 20.0),
             Visibility(child: Text('họp trực tuyến'), visible: true),
             SizedBox(height: 20.0),
+            Container(
+              width: double.infinity,
+              height: 250,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                color: Colors.white,
+                elevation: 10,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const ListTile(
+                      leading: Icon(Icons.album, size: 70),
+                      title: Text('Heart Shaker',
+                          style: TextStyle(color: Colors.black)),
+                      subtitle:
+                          Text('TWICE', style: TextStyle(color: Colors.black)),
+                    ),
+                    InkWell(
+                      onTap: () {
+//                        Navigator.of(context)
+//                            .push(MaterialPageRoute(builder: (context) {
+//
+//                        }));
+                      },
+                      child: new Container(
+                        height: 45,
+                        width: MediaQuery.of(context).size.width / 3,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFf45d27), Color(0xFFf5851f)],
+                            ),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50))),
+                        child: Center(
+                          child: Text(
+                            'Đăng ký'.toUpperCase(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: 120.0,
+              color: Colors.white,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                        onTap: () {
+//                          _onItemTapped(index);
+                        },
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(child: image),
+                            Container(
+                                width: 200,
+                                height: 40.0,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Hello World',
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1),
+                                    ),
+                                  ],
+                                ))
+                          ],
+                        ));
+                  }),
+            ),
           ],
         ),
-      ),
-      resizeToAvoidBottomPadding: false,
+      )),
+      resizeToAvoidBottomPadding: true,
     );
   }
 }

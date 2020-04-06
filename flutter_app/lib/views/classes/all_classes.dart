@@ -412,18 +412,30 @@ class ClassesPageState extends State<ClassesPage> {
               Padding(
                 padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Kỹ năng quản lý ',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.00),
-                  ),
-                ),
+                    alignment: Alignment.centerLeft,
+                    child: Wrap(
+                      children: <Widget>[
+                        Text(
+                          'Kỹ năng quản lý ',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.00),
+                        ),
+                        SizedBox(width: 150.0),
+                        Text(
+                          'Xem thêm',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16.00,
+                          ),
+                        ),
+                      ],
+                    )),
               ),
               ListView.builder(
                 shrinkWrap: true,
+                scrollDirection: Axis.vertical,
                 physics: ClampingScrollPhysics(),
                 itemCount: projectSnap?.data?.length ?? 0,
                 itemBuilder: (context, index) {
@@ -447,7 +459,7 @@ class ClassesPageState extends State<ClassesPage> {
                             },
                             child: Center(
                               child: Image.network(project?.avatar,
-                                  height: 120, width: 120),
+                                  height: 130, width: 130),
                             ),
                           ),
                           GestureDetector(
@@ -477,38 +489,66 @@ class ClassesPageState extends State<ClassesPage> {
                                     ],
                                   ),
                                   SizedBox(height: 10.0),
-                                  Row(
+                                  Wrap(
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
                                     children: <Widget>[
                                       Container(
                                         child: Icon(Icons.person),
                                       ),
-                                      Text('30M',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold))
-                                    ],
-                                  ),
-                                  SizedBox(height: 10.0),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        margin:
-                                            const EdgeInsets.only(bottom: 8.0),
-                                        child: Icon(Icons.home),
-                                      ),
-                                      Text('05 Lớp',
+                                      Text('30M | ',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
                                       Container(
-                                          margin: const EdgeInsets.only(
-                                              left: 10.0, right: 10.0)),
+                                        margin:
+                                            const EdgeInsets.only(bottom: 1.0),
+                                        child: Icon(Icons.home),
+                                      ),
+                                      Text('05 Lớp | ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
                                       Container(
                                         child: Icon(Icons.closed_caption),
                                       ),
-                                      Text('07 ngày 18 giờ',
+                                      Text('07 ngày',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
+                                  SizedBox(height: 5.0),
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 20.0,
+                                        top: 10.0,
+                                        bottom: 10.0,
+                                        right: 20.0),
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: new Container(
+                                        height: 30,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                3,
+                                        decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                Color(0xFFf45d27),
+                                                Color(0xFFf5851f)
+                                              ],
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(50))),
+                                        child: Center(
+                                          child: Text(
+                                            'Đăng ký'.toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
