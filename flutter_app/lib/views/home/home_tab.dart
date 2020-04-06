@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/account/my_account.dart';
 import 'package:flutter_app/views/classes/all_classes.dart';
 import 'package:flutter_app/views/home/home_view.dart';
 import 'package:flutter_app/views/loadmore/tab.dart';
+import 'package:flutter_app/views/setting/setting_view.dart';
 import 'package:flutter_app/views/test/test.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class HomeTabApp extends StatelessWidget {
   @override
@@ -30,72 +33,58 @@ class HomeTabState extends State<HomeTabPage> {
     HomeApp(),
     ClassesApp(),
     HomeScreen(),
-    MyAppTest(),
-    Center(child: Text('Profile')),
+    MyAccountApp(),
+    SettingPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    var ic_home = new Image(
+        image: AssetImage('assets/ic_home.png'), height: 35, width: 50);
+    var ic_setting = new Image(
+        image: AssetImage('assets/ic_setting.png'), height: 35, width: 50);
+    var ic_course = new Image(
+        image: AssetImage('assets/ic_course.png'), height: 35, width: 50);
+    var ic_account = new Image(
+        image: AssetImage('assets/ic_account.png'), height: 35, width: 50);
+    var ic_search = new Image(
+        image: AssetImage('assets/ic_search.png'), height: 35, width: 50);
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Xin chào Hoàng Văn Trưởng'),
-        actions: <Widget>[
-          Stack(
-            children: <Widget>[
-              IconButton(
-                  icon: const Icon(Icons.notifications), onPressed: () {}),
-              Container(
-                width: 30,
-                height: 30,
-                alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(top: 5),
-                child: Container(
-                  width: 15,
-                  height: 15,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffc32c37),
-                      border: Border.all(color: Colors.white, width: 1)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Center(
-                      child: Text(
-                        '5',
-                        style: TextStyle(fontSize: 10),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          )
-        ],
-      ),
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Trang chủ'),
-              backgroundColor: Colors.blue),
+              icon: ic_home,
+              title: Text('Trang chủ',
+                  style: TextStyle(
+                      color: Hexcolor('#AA3234'), fontWeight: FontWeight.bold)),
+              backgroundColor: Hexcolor('#FFFFFF')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              title: Text('Tìm Kiếm'),
-              backgroundColor: Colors.blue),
+              icon: ic_search,
+              title: Text('Tìm Kiếm',
+                  style: TextStyle(
+                      color: Hexcolor('#AA3234'), fontWeight: FontWeight.bold)),
+              backgroundColor: Hexcolor('#FFFFFF')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.camera),
-              title: Text('Khoá học của tôi'),
-              backgroundColor: Colors.blue),
+              icon: ic_course,
+              title: Text('Khoá học của tôi',
+                  style: TextStyle(
+                      color: Hexcolor('#AA3234'), fontWeight: FontWeight.bold)),
+              backgroundColor: Hexcolor('#FFFFFF')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text('Tài khoản'),
-              backgroundColor: Colors.blue),
+              icon: ic_account,
+              title: Text('Tài khoản',
+                  style: TextStyle(
+                      color: Hexcolor('#AA3234'), fontWeight: FontWeight.bold)),
+              backgroundColor: Hexcolor('#FFFFFF')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('Cài đặt'),
-              backgroundColor: Colors.blue)
+              icon: ic_setting,
+              title: Text('Cài đặt',
+                  style: TextStyle(
+                      color: Hexcolor('#AA3234'), fontWeight: FontWeight.bold)),
+              backgroundColor: Hexcolor('#FFFFFF'))
         ],
         onTap: (index) {
           setState(() {

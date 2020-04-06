@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,28 +8,32 @@ import 'package:flutter_app/views/classes/classes_detail.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
 
-import 'all_classes_home.dart';
-
-class HomeApp extends StatelessWidget {
+class AllClassesHomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: AllClassesHomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class AllClassesHomePage extends StatefulWidget {
   @override
-  _HomePageState createState() {
+  AllClassesHomeState createState() {
     // TODO: implement createState
-    return _HomePageState();
+    return AllClassesHomeState();
   }
 }
 
-class _HomePageState extends State<HomePage> {
+class AllClassesHomeState extends State<AllClassesHomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   List<ClassesModel> _listClasses = List<ClassesModel>();
 
   List<ClassesModel> parseClasses(String responseBody) {
@@ -49,25 +54,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  var listClasses = [
-    'Tất cả các khoá học',
-    'khoá học của tôi',
-    'lộ trình học tập',
-    'đề thi',
-    'lịch học sắp tới',
-    'kết quả học tập',
-    'họp trực tuyến'
-  ];
-
-  bool a = true;
-  bool b = true;
-  bool c = true;
-  bool d = true;
-  bool e = true;
-  bool f = true;
-  bool g = true;
-
-  Widget AllClassesWidget() {
+  Widget allClassesWidget() {
     return FutureBuilder(
         future: fetchClasses(),
         builder: (BuildContext context, AsyncSnapshot projectSnap) {
@@ -85,44 +72,11 @@ class _HomePageState extends State<HomePage> {
           }
           return Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: Align(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Tất cả các khoá học',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.00),
-                    ),
-                    SizedBox(width: 105.0),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return AllClassesHomePage();
-                        }));
-                      },
-                      child: Text(
-                        'Xem thêm'.toUpperCase(),
-                        style: TextStyle(
-                          color: Hexcolor('#AA3234'),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15.00,
-                        ),
-                      ),
-                    )
-                  ],
-                )),
-              ),
               ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: ClampingScrollPhysics(),
-                itemCount: 4,
+                itemCount: projectSnap?.data?.length ?? 0,
                 itemBuilder: (context, index) {
                   ClassesModel project = projectSnap?.data[index];
                   print(" -------" + project.avatar);
@@ -248,102 +202,42 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    var ic_more = new Image(
-        image: AssetImage('assets/ic_more.png'), height: 35, width: 50);
-    // TODO: implement build
+    var ic_close = new Image(
+        image: AssetImage('assets/ic_close.png'), height: 35, width: 50);
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    // TODO: implement build
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(90.0),
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              colors: [Hexcolor('#FAA244'), Hexcolor('#FF8400')],
-            )),
-            child: AppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-              title: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text('Chào mừng đến',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0)),
-                  const Text('LearnHub',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22.0)),
-                ],
-              ),
-              flexibleSpace: Image(
-                  image: AssetImage('assets/ic_toolbar.png'),
-                  fit: BoxFit.cover),
-              actions: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    IconButton(
-                        icon: const Icon(Icons.notifications),
-                        onPressed: () {}),
-                    Container(
-                      width: 30,
-                      height: 30,
-                      alignment: Alignment.topLeft,
-                      margin: EdgeInsets.only(top: 10),
-                      child: Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xffc32c37),
-                            border: Border.all(color: Colors.white, width: 1)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0.0),
-                          child: Center(
-                            child: Text(
-                              '5',
-                              style: TextStyle(fontSize: 10),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                PopupMenuButton<String>(
-                  icon: ic_more,
-                  itemBuilder: (BuildContext context) {
-                    return listClasses.map((String choice) {
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                  onSelected: null,
-                ),
-              ],
-            ),
+      appBar: PreferredSize(
+        child: AppBar(
+          backgroundColor: Hexcolor('#FFFFFF'),
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text('Tất cả khoá học',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0)),
+            ],
           ),
+          actions: <Widget>[
+            IconButton(
+                icon: ic_close,
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+          ],
         ),
-        body: Container(
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 30.0),
-                Visibility(child: AllClassesWidget(), visible: true),
-              ],
-            ),
-          ),
-        ));
+        preferredSize: Size.fromHeight(60.0),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            allClassesWidget(),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -136,7 +136,7 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 16, right: 32),
+                      padding: const EdgeInsets.only(top: 16),
                       child: Text(
                         'Quên mật khẩu ?',
                         style: TextStyle(color: Colors.black),

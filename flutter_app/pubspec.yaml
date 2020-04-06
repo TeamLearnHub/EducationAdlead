@@ -34,7 +34,7 @@ dependencies:
   flutter_cache_manager: ^0.3.2
   chewie: any
   video_player: any
-  hexcolor :  1.0.1
+  hexcolor:  1.0.1
 module:
   androidX: true
 dev_dependencies:
@@ -59,6 +59,14 @@ flutter:
   assets:
     - assets/open.png
     - assets/ic_logo.png
+    - assets/ic_home.png
+    - assets/ic_setting.png
+    - assets/ic_course.png
+    - assets/ic_account.png
+    - assets/ic_search.png
+    - assets/ic_more.png
+    - assets/ic_toolbar.png
+    - assets/ic_close.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
