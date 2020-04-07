@@ -233,7 +233,9 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                  )
+                                  ),
+                                  Image(
+                                      image: AssetImage('assets/ic_line.png')),
                                 ],
                               ),
                             ),
@@ -257,6 +259,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var ic_more = new Image(
         image: AssetImage('assets/ic_more.png'), height: 35, width: 50);
+
+    var ic_notification= new Image(
+        image: AssetImage('assets/ic_notification.png'), height: 35, width: 50);
     // TODO: implement build
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     return Scaffold(
@@ -292,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                 Stack(
                   children: <Widget>[
                     IconButton(
-                        icon: const Icon(Icons.notifications),
+                        icon: ic_notification,
                         onPressed: () {}),
                     Container(
                       width: 30,

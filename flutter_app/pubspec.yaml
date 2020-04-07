@@ -67,6 +67,14 @@ flutter:
     - assets/ic_more.png
     - assets/ic_toolbar.png
     - assets/ic_close.png
+    - assets/ic_line.png
+    - assets/ic_notification.png
+    - assets/ic_learning.png
+    - assets/ic_next.png
+    - assets/ic_line_big.png
+    - assets/ic_exam.png
+    - assets/ic_result.png
+    - assets/ic_meeting.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
