@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/util/Preferences.dart';
 import 'package:flutter_app/views/home/home_tab.dart';
 import 'package:flutter_app/views/home/home_view.dart';
 import 'package:flutter_app/views/login/login_contact.dart';
@@ -111,10 +112,23 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                   SizedBox(height: 60),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return HomeTabApp();
-                      }));
+//                      Preferences.setToken("ojsjjsjjsjs");
+//                    print('hello token = ' +Preferences.getToken());
+//                      _preseneter.login(cntrlEmail.toString(), cntrlPassword.toString());
+                      if (Preferences.getToken() == null) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          Preferences.clear();
+                          return HomeTabApp();
+                        }));
+                        print(Preferences.getToken());
+                      } else {
+//                        print('hello token = ' +Preferences.getToken());
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return  HomeTabApp();
+                        }));
+                      }
                     },
                     child: new Container(
                       height: 50,

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/home/home_view.dart';
 
 class SettingApp extends StatelessWidget {
   @override
@@ -19,7 +18,6 @@ class SettingPage extends StatefulWidget {
     // TODO: implement createState
     return _SettingPageSate();
   }
-
 }
 
 class _SettingPageSate extends State<SettingPage> {
@@ -32,9 +30,8 @@ class _SettingPageSate extends State<SettingPage> {
         leading: IconButton(
             icon: Icon(Icons.chevron_left),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return HomeApp();
-              }));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) {}));
             }),
       ),
       body: Container(
@@ -188,7 +185,7 @@ class _SettingPageSate extends State<SettingPage> {
                 decoration: const BoxDecoration(
                     border: Border(
                         bottom:
-                        BorderSide(width: 4.0, color: Color(0xFF000000)))),
+                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
                 child: GestureDetector(
                   onTap: () {},
                   child: Row(

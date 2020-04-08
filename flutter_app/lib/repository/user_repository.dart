@@ -29,7 +29,9 @@ class UserRepositoryImpl implements UserRepository {
       }
       final String token = _networkService.convertJsonMap(res.body)["token"];
       return Preferences.setToken(token);
+
     });
+
   }
 
   @override

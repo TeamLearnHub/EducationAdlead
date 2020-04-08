@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -441,120 +442,126 @@ class ClassesPageState extends State<ClassesPage> {
                 itemBuilder: (context, index) {
                   ClassesModel project = projectSnap?.data[index];
                   print(" -------" + project.avatar);
-                  return Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 8.0,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailApp();
-                              }));
-                            },
-                            child: Center(
-                              child: Image.network(project?.avatar,
-                                  height: 130, width: 130),
+                  return Card(
+                    margin: EdgeInsets.all(8.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0)),
+                    color: Colors.white,
+                    elevation: 2,
+                    child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return ClassesDetailApp();
+                                }));
+                              },
+                              child: Center(
+                                child: Image.network(project?.avatar,
+                                    height: 130, width: 130),
+                              ),
                             ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailApp();
-                              }));
-                            },
-                            onLongPress: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailApp();
-                              }));
-                            },
-                            child: Container(
-                              margin:
-                                  const EdgeInsets.only(top: 15.0, left: 12.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Text('Kỹ năng quản lý thời gian',
-                                          style: TextStyle(color: Colors.black))
-                                    ],
-                                  ),
-                                  SizedBox(height: 10.0),
-                                  Wrap(
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Icon(Icons.person),
-                                      ),
-                                      Text('30M | ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      Container(
-                                        margin:
-                                            const EdgeInsets.only(bottom: 1.0),
-                                        child: Icon(Icons.home),
-                                      ),
-                                      Text('05 Lớp | ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      Container(
-                                        child: Icon(Icons.closed_caption),
-                                      ),
-                                      Text('07 ngày',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5.0),
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                        left: 20.0,
-                                        top: 10.0,
-                                        bottom: 10.0,
-                                        right: 20.0),
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: new Container(
-                                        height: 30,
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3,
-                                        decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                Color(0xFFf45d27),
-                                                Color(0xFFf5851f)
-                                              ],
-                                            ),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(50))),
-                                        child: Center(
-                                          child: Text(
-                                            'Đăng ký'.toUpperCase(),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return ClassesDetailApp();
+                                }));
+                              },
+                              onLongPress: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return ClassesDetailApp();
+                                }));
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                    top: 15.0, left: 12.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Text('Kỹ năng quản lý thời gian',
+                                            style:
+                                                TextStyle(color: Colors.black))
+                                      ],
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    Wrap(
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Icon(Icons.person),
+                                        ),
+                                        Text('30M | ',
                                             style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold)),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              bottom: 1.0),
+                                          child: Icon(Icons.home),
+                                        ),
+                                        Text('05 Lớp | ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                        Container(
+                                          child: Icon(Icons.closed_caption),
+                                        ),
+                                        Text('07 ngày',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
+                                    SizedBox(height: 5.0),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                          left: 20.0,
+                                          top: 10.0,
+                                          bottom: 10.0,
+                                          right: 20.0),
+                                      child: InkWell(
+                                        onTap: () {},
+                                        child: new Container(
+                                          height: 30,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3,
+                                          decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Color(0xFFf45d27),
+                                                  Color(0xFFf5851f)
+                                                ],
+                                              ),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(50))),
+                                          child: Center(
+                                            child: Text(
+                                              'Đăng ký'.toUpperCase(),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                          )
-                        ],
-                      ));
+                            )
+                          ],
+                        )),
+                  );
                 },
               )
             ],
@@ -573,12 +580,10 @@ class ClassesPageState extends State<ClassesPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return WillPopScope(
-        onWillPop: () {
-          Navigator.pop(context);
-        },
-        child: Scaffold(
-            backgroundColor: Colors.white,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            backgroundColor: Hexcolor('F5f6f9'),
             appBar: AppBar(
               backgroundColor: Color(0xFFfbe3ee),
               leading: IconButton(

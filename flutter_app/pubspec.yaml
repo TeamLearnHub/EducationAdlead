@@ -35,6 +35,8 @@ dependencies:
   chewie: any
   video_player: any
   hexcolor:  1.0.1
+  percent_indicator: ^2.1.1
+  flappy_search_bar: ^1.7.2
 module:
   androidX: true
 dev_dependencies:
@@ -75,6 +77,11 @@ flutter:
     - assets/ic_exam.png
     - assets/ic_result.png
     - assets/ic_meeting.png
+    - assets/ic_class.png
+    - assets/ic_time.png
+    - assets/ic_students.png
+    - assets/logo_learning.png
+    - assets/logo_class.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -54,6 +54,16 @@ class AllClassesHomeState extends State<AllClassesHomePage> {
     }
   }
 
+  var listClasses = [
+    'Tất cả khoá học',
+    'Kỹ năng quản lý',
+    'Kỹ năng mềm',
+    'Khoá học Offline',
+    'Quy trình nghiệp vụ',
+  ];
+
+  var currentListClasses = 'Tất cả khoá học';
+
   Widget allClassesWidget() {
     return FutureBuilder(
         future: fetchClasses(),
@@ -123,8 +133,12 @@ class AllClassesHomeState extends State<AllClassesHomePage> {
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[
+                                      SizedBox(width: 6.0),
                                       Text('Kỹ năng quản lý thời gian',
-                                          style: TextStyle(color: Colors.black))
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold))
                                     ],
                                   ),
                                   SizedBox(height: 10.0),
@@ -133,31 +147,46 @@ class AllClassesHomeState extends State<AllClassesHomePage> {
                                         WrapCrossAlignment.center,
                                     children: <Widget>[
                                       Container(
-                                        child: Icon(Icons.person),
+                                        child: new Image(
+                                            image: AssetImage(
+                                                'assets/ic_students.png'),
+                                            height: 18,
+                                            width: 25),
                                       ),
                                       Text('30M | ',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.normal,
+                                              color: Hexcolor('#787878'))),
                                       Container(
                                         margin:
                                             const EdgeInsets.only(bottom: 1.0),
-                                        child: Icon(Icons.home),
+                                        child: new Image(
+                                            image: AssetImage(
+                                                'assets/ic_class.png'),
+                                            height: 18.0,
+                                            width: 25.0),
                                       ),
                                       Text('05 Lớp | ',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.normal,
+                                              color: Hexcolor('#787878'))),
                                       Container(
-                                        child: Icon(Icons.closed_caption),
+                                        child: new Image(
+                                          image:
+                                              AssetImage('assets/ic_time.png'),
+                                          height: 18.0,
+                                          width: 25.0,
+                                        ),
                                       ),
                                       Text('07 ngày',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.normal)),
                                     ],
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(
                                     margin: const EdgeInsets.only(
-                                        left: 20.0,
+                                        left: 5.0,
                                         top: 10.0,
                                         bottom: 10.0,
                                         right: 20.0),
@@ -187,7 +216,9 @@ class AllClassesHomeState extends State<AllClassesHomePage> {
                                         ),
                                       ),
                                     ),
-                                  )
+                                  ),
+                                  Image(
+                                      image: AssetImage('assets/ic_line.png')),
                                 ],
                               ),
                             ),
@@ -234,6 +265,33 @@ class AllClassesHomeState extends State<AllClassesHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            Container(
+                padding: EdgeInsets.only(left: 20, right: 10),
+                margin: EdgeInsets.only(top: 30, left: 20, right: 20),
+                height: MediaQuery.of(context).size.height / 20,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Hexcolor('#F5F6F9')),
+                child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                        value: currentListClasses,
+                        isExpanded: true,
+                        hint: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Tất cả khoá học')),
+                        items: listClasses.map((String value) {
+                          return new DropdownMenuItem<String>(
+                              child: new Text(value), value: value);
+                        }).toList(),
+                        onChanged: (String value) {
+                          setState(() {
+                            this.currentListClasses = value;
+//                            testSelect(value);
+                            print(value);
+                          });
+                        }))),
+            SizedBox(height: 20.0),
+            Image(image: AssetImage('assets/ic_line_big.png')),
             allClassesWidget(),
           ],
         ),

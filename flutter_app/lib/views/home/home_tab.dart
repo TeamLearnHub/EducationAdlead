@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/account/my_account.dart';
-import 'package:flutter_app/views/classes/all_classes.dart';
+import 'package:flutter_app/views/course/my_course.dart';
 import 'package:flutter_app/views/home/home_view.dart';
-import 'package:flutter_app/views/loadmore/tab.dart';
+import 'package:flutter_app/views/search/search_view.dart';
 import 'package:flutter_app/views/setting/setting_view.dart';
-import 'package:flutter_app/views/test/test.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class HomeTabApp extends StatelessWidget {
@@ -30,9 +29,9 @@ class HomeTabPage extends StatefulWidget {
 class HomeTabState extends State<HomeTabPage> {
   int _currentIndex = 0;
   final tabs = [
-    HomeApp(),
-    ClassesApp(),
-    HomeScreen(),
+    HomePage(),
+    SearchViewPage(),
+    MyCoursePage(),
     MyAccountApp(),
     SettingPage(),
   ];

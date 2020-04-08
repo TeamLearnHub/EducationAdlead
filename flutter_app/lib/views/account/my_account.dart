@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/util/Preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class MyAccountApp extends StatelessWidget {
@@ -92,7 +93,9 @@ class MyAccountSate extends State<MyAccountPage> {
           Row(
             children: <Widget>[
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Preferences.clear();
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(

@@ -9,17 +9,6 @@ import 'package:http/http.dart' as prefix0;
 
 import 'all_classes_home.dart';
 
-class HomeApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
-  }
-}
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() {
@@ -36,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     _listClasses = parsed
         .map<ClassesModel>((json) => ClassesModel.fromJson(json))
         .toList();
-    return _listClasses;
+    return _listClasses.sublist(0, 4);
   }
 
   Future<List<ClassesModel>> fetchClasses() async {
@@ -66,6 +55,27 @@ class _HomePageState extends State<HomePage> {
   bool e = true;
   bool f = true;
   bool g = true;
+
+  Widget LearningWidget() {
+    return Stack(
+      alignment: Alignment.centerRight,
+      children: <Widget>[
+        Image(
+          image: AssetImage('assets/logo_learning.png'),
+          height: 225.0,
+        ),
+        Column(
+          children: <Widget>[
+            Text('Lộ trình học tập ',
+                style: TextStyle(
+                    color: Hexcolor('#FFFFFF'),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0)),
+          ],
+        )
+      ],
+    );
+  }
 
   Widget AllClassesWidget() {
     return FutureBuilder(
@@ -122,9 +132,10 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: ClampingScrollPhysics(),
-                itemCount: 4,
+                itemCount: projectSnap?.data?.length ?? 0,
                 itemBuilder: (context, index) {
                   ClassesModel project = projectSnap?.data[index];
+
                   print(" -------" + project.avatar);
                   return Padding(
                       padding: EdgeInsets.symmetric(
@@ -169,8 +180,12 @@ class _HomePageState extends State<HomePage> {
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[
+                                      SizedBox(width: 6.0),
                                       Text('Kỹ năng quản lý thời gian',
-                                          style: TextStyle(color: Colors.black))
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold))
                                     ],
                                   ),
                                   SizedBox(height: 10.0),
@@ -179,31 +194,46 @@ class _HomePageState extends State<HomePage> {
                                         WrapCrossAlignment.center,
                                     children: <Widget>[
                                       Container(
-                                        child: Icon(Icons.person),
+                                        child: new Image(
+                                            image: AssetImage(
+                                                'assets/ic_students.png'),
+                                            height: 18,
+                                            width: 25),
                                       ),
                                       Text('30M | ',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.normal,
+                                              color: Hexcolor('#787878'))),
                                       Container(
                                         margin:
                                             const EdgeInsets.only(bottom: 1.0),
-                                        child: Icon(Icons.home),
+                                        child: new Image(
+                                            image: AssetImage(
+                                                'assets/ic_class.png'),
+                                            height: 18.0,
+                                            width: 25.0),
                                       ),
                                       Text('05 Lớp | ',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.normal,
+                                              color: Hexcolor('#787878'))),
                                       Container(
-                                        child: Icon(Icons.closed_caption),
+                                        child: new Image(
+                                          image:
+                                              AssetImage('assets/ic_time.png'),
+                                          height: 18.0,
+                                          width: 25.0,
+                                        ),
                                       ),
                                       Text('07 ngày',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.normal)),
                                     ],
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(
                                     margin: const EdgeInsets.only(
-                                        left: 20.0,
+                                        left: 5.0,
                                         top: 10.0,
                                         bottom: 10.0,
                                         right: 20.0),
@@ -253,6 +283,21 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    fetchClasses();
+  }
+
+  void choice(String choice) {
+    if (choice == "khoá học của tôi") {
+      setState(() {
+        print(choice);
+        a = false;
+      });
+    } else if (choice == "Tất cả các khoá học") {
+      setState(() {
+        print(choice);
+        a = true;
+      });
+    }
   }
 
   @override
@@ -260,7 +305,7 @@ class _HomePageState extends State<HomePage> {
     var ic_more = new Image(
         image: AssetImage('assets/ic_more.png'), height: 35, width: 50);
 
-    var ic_notification= new Image(
+    var ic_notification = new Image(
         image: AssetImage('assets/ic_notification.png'), height: 35, width: 50);
     // TODO: implement build
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
@@ -296,9 +341,7 @@ class _HomePageState extends State<HomePage> {
               actions: <Widget>[
                 Stack(
                   children: <Widget>[
-                    IconButton(
-                        icon: ic_notification,
-                        onPressed: () {}),
+                    IconButton(icon: ic_notification, onPressed: () {}),
                     Container(
                       width: 30,
                       height: 30,
@@ -334,7 +377,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }).toList();
                   },
-                  onSelected: null,
+                  onSelected: choice,
                 ),
               ],
             ),
@@ -345,7 +388,8 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 30.0),
-                Visibility(child: AllClassesWidget(), visible: true),
+                Visibility(child: AllClassesWidget(), visible: a),
+                Visibility(child: LearningWidget(), visible: true),
               ],
             ),
           ),
