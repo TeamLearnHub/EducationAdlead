@@ -279,6 +279,154 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  Widget scheduleWidget() {
+    return FutureBuilder(
+        future: fetchClasses(),
+        builder: (BuildContext context, AsyncSnapshot projectSnap) {
+          print(projectSnap.data);
+          if (projectSnap.connectionState == ConnectionState.none &&
+              projectSnap.hasData == null) {
+            return GestureDetector(
+              child: Center(
+                child: Image.network(
+                    "https://dzbbmecpa0hd2.cloudfront.net/video/avatar/2019/04/11/14/1554966002_de58c8a6be7d1046.jpg",
+                    height: 120,
+                    width: 120),
+              ),
+            );
+          }
+          return Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+                child: Align(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Lịch học sắp tới',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.00),
+                    ),
+                    SizedBox(width: 135.0),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return AllClassesHomePage();
+                        }));
+                      },
+                      child: Text(
+                        'Xem thêm'.toUpperCase(),
+                        style: TextStyle(
+                          color: Hexcolor('#AA3234'),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.00,
+                        ),
+                      ),
+                    )
+                  ],
+                )),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                physics: ClampingScrollPhysics(),
+                itemCount: projectSnap?.data?.length ?? 0,
+                itemBuilder: (context, index) {
+                  ClassesModel project = projectSnap?.data[index];
+
+                  print(" -------" + project.avatar);
+                  return Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailPage();
+                              }));
+                            },
+                            child: Center(
+                              child: Image.network(project?.avatar,
+                                  height: 130, width: 130),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailPage();
+                              }));
+                            },
+                            onLongPress: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailPage();
+                              }));
+                            },
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.only(top: 35.0, left: 12.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      SizedBox(width: 6.0),
+                                      Flexible(
+                                          child: Text(
+                                              'Bồi dưỡng kỹ năng chăm sóc khách hàng',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold)))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10.0),
+                                  Wrap(
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        child: new Image(
+                                          image:
+                                              AssetImage('assets/ic_time.png'),
+                                          height: 18.0,
+                                          width: 25.0,
+                                        ),
+                                      ),
+                                      Text('15/06/2020',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.normal)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 25.0),
+                                  Image(
+                                      image: AssetImage('assets/ic_line.png')),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ));
+                },
+              )
+            ],
+          );
+        });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -390,6 +538,108 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(height: 30.0),
                 Visibility(child: AllClassesWidget(), visible: a),
                 Visibility(child: LearningWidget(), visible: true),
+                SizedBox(height: 20.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
+                Visibility(
+                  child: Row(
+                    children: <Widget>[
+                      GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(width: 20.0),
+                                Image(
+                                    image: AssetImage('assets/logo_exam.png')),
+                                SizedBox(width: 18.0),
+                                Text('Đề thi',
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Hexcolor('#434343'),
+                                        fontWeight: FontWeight.bold)),
+                                SizedBox(width: 245.0),
+                                Image(image: AssetImage('assets/ic_next.png'))
+                              ],
+                            ),
+                          ))
+                    ],
+                  ),
+                  visible: true,
+                ),
+                SizedBox(height: 15.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
+                Visibility(child: scheduleWidget(), visible: true),
+                SizedBox(height: 15.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
+                Visibility(
+                  child: Row(
+                    children: <Widget>[
+                      GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(width: 20.0),
+                                Image(
+                                    image:
+                                        AssetImage('assets/logo_result.png')),
+                                SizedBox(width: 18.0),
+                                Text('Kết quả học tập',
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Hexcolor('#434343'),
+                                        fontWeight: FontWeight.bold)),
+                                SizedBox(width: 160.0),
+                                Image(image: AssetImage('assets/ic_next.png'))
+                              ],
+                            ),
+                          ))
+                    ],
+                  ),
+                  visible: true,
+                ),
+                SizedBox(height: 15.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
+                Visibility(
+                  child: Row(
+                    children: <Widget>[
+                      GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(width: 20.0),
+                                Image(
+                                    image:
+                                        AssetImage('assets/logo_meeting.png')),
+                                SizedBox(width: 18.0),
+                                Text('Họp trực tuyến',
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Hexcolor('#434343'),
+                                        fontWeight: FontWeight.bold)),
+                                SizedBox(width: 160.0),
+                                Image(image: AssetImage('assets/ic_next.png'))
+                              ],
+                            ),
+                          ))
+                    ],
+                  ),
+                  visible: true,
+                ),
+                SizedBox(height: 15.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
               ],
             ),
           ),

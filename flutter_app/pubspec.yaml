@@ -82,6 +82,9 @@ flutter:
     - assets/ic_students.png
     - assets/logo_learning.png
     - assets/logo_class.png
+    - assets/logo_exam.png
+    - assets/logo_result.png
+    - assets/logo_meeting.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
