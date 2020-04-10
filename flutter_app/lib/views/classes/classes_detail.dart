@@ -8,17 +8,6 @@ import 'package:flutter_app/views/download/download_view.dart';
 import 'package:flutter_app/views/test/test.dart';
 import 'package:video_player/video_player.dart';
 
-class ClassesDetailApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      home: ClassesDetailPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class ClassesDetailPage extends StatefulWidget {
   @override
   ClassesDetailState createState() {

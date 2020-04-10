@@ -458,7 +458,7 @@ class ClassesPageState extends State<ClassesPage> {
                               onTap: () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  return ClassesDetailApp();
+                                  return ClassesDetailPage();
                                 }));
                               },
                               child: Center(
@@ -470,13 +470,13 @@ class ClassesPageState extends State<ClassesPage> {
                               onTap: () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  return ClassesDetailApp();
+                                  return ClassesDetailPage();
                                 }));
                               },
                               onLongPress: () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  return ClassesDetailApp();
+                                  return ClassesDetailPage();
                                 }));
                               },
                               child: Container(

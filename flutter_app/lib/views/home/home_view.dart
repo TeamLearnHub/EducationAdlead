@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
+import 'package:flutter_app/views/course/my_course.dart';
+import 'package:flutter_app/views/course/my_course_home.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'all_classes_home.dart';
 
@@ -56,6 +59,149 @@ class _HomePageState extends State<HomePage> {
   bool f = true;
   bool g = true;
 
+  Widget myCourseWidget() {
+    return FutureBuilder(
+        future: fetchClasses(),
+        builder: (BuildContext context, AsyncSnapshot projectSnap) {
+          print(projectSnap.data);
+          if (projectSnap.connectionState == ConnectionState.none &&
+              projectSnap.hasData == null) {
+            return GestureDetector(
+              child: Center(
+                child: Image.network(
+                    "https://dzbbmecpa0hd2.cloudfront.net/video/avatar/2019/04/11/14/1554966002_de58c8a6be7d1046.jpg",
+                    height: 120,
+                    width: 120),
+              ),
+            );
+          }
+          return Container(
+            height: 290.0,
+            width: double.maxFinite,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: ClampingScrollPhysics(),
+              itemCount: projectSnap?.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                ClassesModel project = projectSnap?.data[index];
+
+                print(" -------" + project.avatar);
+                return Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 2.0,
+                      vertical: 8.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(width: 8.0),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return MyCoursePage();
+                            }));
+                          },
+                          onLongPress: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return MyCoursePage();
+                            }));
+                          },
+                          child: Container(
+                              height: 270.0,
+                              margin: const EdgeInsets.only(top: 15.0),
+                              child: Stack(
+                                children: <Widget>[
+                                  Image(
+                                      image:
+                                          AssetImage('assets/logo_course.png')),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(height: 180.0),
+                                      Row(
+                                        children: <Widget>[
+                                          SizedBox(width: 8.0),
+                                          Text('Kỹ năng quản lý thời gian',
+                                              style: TextStyle(
+                                                  color: Hexcolor('#FFFFFF'),
+                                                  fontSize: 16.0,
+                                                  fontWeight:
+                                                      FontWeight.normal))
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.0),
+                                      Wrap(
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
+                                        children: <Widget>[
+                                          Container(
+                                            child: new Image(
+                                                image: AssetImage(
+                                                    'assets/ic_students.png'),
+                                                color: Hexcolor('#FFFFFF'),
+                                                height: 18,
+                                                width: 25),
+                                          ),
+                                          Text('30 | ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Hexcolor('#FFFFFF'))),
+                                          Container(
+                                            margin: const EdgeInsets.only(
+                                                bottom: 1.0),
+                                            child: new Image(
+                                                image: AssetImage(
+                                                    'assets/ic_class.png'),
+                                                color: Hexcolor('#FFFFFF'),
+                                                height: 18.0,
+                                                width: 25.0),
+                                          ),
+                                          Text('05 Lớp | ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Hexcolor('#FFFFFF'))),
+                                          Container(
+                                            child: new Image(
+                                              image: AssetImage(
+                                                  'assets/ic_time.png'),
+                                              color: Hexcolor('#FFFFFF'),
+                                              height: 18.0,
+                                              width: 25.0,
+                                            ),
+                                          ),
+                                          Text('7d 18h',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Hexcolor('#FFFFFF'))),
+                                        ],
+                                      ),
+                                      SizedBox(height: 15.0),
+                                      LinearPercentIndicator(
+                                        width: 200.0,
+                                        lineHeight: 2.0,
+                                        percent: 0.75,
+                                        backgroundColor: Hexcolor('#FFFFFF'),
+                                        progressColor: Hexcolor('#E8943A'),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              )),
+                        )
+                      ],
+                    ));
+              },
+            ),
+          );
+        });
+  }
+
   Widget LearningWidget() {
     return Stack(
       alignment: Alignment.centerRight,
@@ -63,14 +209,17 @@ class _HomePageState extends State<HomePage> {
         Image(
           image: AssetImage('assets/logo_learning.png'),
           height: 225.0,
+          width: double.maxFinite,
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text('Lộ trình học tập ',
                 style: TextStyle(
                     color: Hexcolor('#FFFFFF'),
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0)),
+            SizedBox(width: 20.0)
           ],
         )
       ],
@@ -296,6 +445,7 @@ class _HomePageState extends State<HomePage> {
             );
           }
           return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
@@ -374,29 +524,30 @@ class _HomePageState extends State<HomePage> {
                               }));
                             },
                             child: Container(
+                              constraints: BoxConstraints(maxWidth: 225),
                               margin:
-                                  const EdgeInsets.only(top: 35.0, left: 12.0),
+                                  const EdgeInsets.only(top: 35.0, left: 10.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Row(
+                                  Wrap(
+                                    alignment: WrapAlignment.end,
                                     children: <Widget>[
                                       SizedBox(width: 6.0),
-                                      Flexible(
-                                          child: Text(
-                                              'Bồi dưỡng kỹ năng chăm sóc khách hàng',
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold)))
+                                      Text(
+                                          'Bồi dưỡng kỹ năng chăm sóc khách hàng',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                   SizedBox(height: 10.0),
-                                  Wrap(
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
                                         child: new Image(
@@ -537,6 +688,46 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 SizedBox(height: 30.0),
                 Visibility(child: AllClassesWidget(), visible: a),
+                SizedBox(height: 20.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
+                Padding(
+                  padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+                  child: Align(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Khoá học của tôi',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.00),
+                      ),
+                      SizedBox(width: 145.0),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return MyCourseHomePage();
+                          }));
+                        },
+                        child: Text(
+                          'Xem thêm'.toUpperCase(),
+                          style: TextStyle(
+                            color: Hexcolor('#AA3234'),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.00,
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+                ),
+                Visibility(child: myCourseWidget(), visible: true),
+                SizedBox(height: 20.0),
+                Image(image: AssetImage('assets/ic_line_big.png')),
+                SizedBox(height: 15.0),
                 Visibility(child: LearningWidget(), visible: true),
                 SizedBox(height: 20.0),
                 Image(image: AssetImage('assets/ic_line_big.png')),

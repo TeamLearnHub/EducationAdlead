@@ -5,6 +5,7 @@ import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -79,8 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
           return Container(
-            height: double.maxFinite,
-            width: 200.0,
+            height:  300,
+            width: double.maxFinite,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -99,19 +100,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Image.network(project?.avatar,
-                            height: 130, width: 130),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return ClassesDetailPage();
-                            }));
-                          },
-                          child: Center(
-                            child: Image(image: AssetImage('assets/open.png'))
-                          ),
-                        ),
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context)
@@ -126,98 +114,87 @@ class _MyHomePageState extends State<MyHomePage> {
                             }));
                           },
                           child: Container(
-                            margin:
-                                const EdgeInsets.only(top: 15.0, left: 12.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    SizedBox(width: 6.0),
-                                    Text('Kỹ năng quản lý thời gian',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold))
-                                  ],
-                                ),
-                                SizedBox(height: 10.0),
-                                Wrap(
-                                  crossAxisAlignment: WrapCrossAlignment.center,
-                                  children: <Widget>[
-                                    Container(
-                                      child: new Image(
-                                          image: AssetImage(
-                                              'assets/ic_students.png'),
-                                          height: 18,
-                                          width: 25),
-                                    ),
-                                    Text('30M | ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal,
-                                            color: Hexcolor('#787878'))),
-                                    Container(
-                                      margin:
-                                          const EdgeInsets.only(bottom: 1.0),
-                                      child: new Image(
-                                          image:
-                                              AssetImage('assets/ic_class.png'),
-                                          height: 18.0,
-                                          width: 25.0),
-                                    ),
-                                    Text('05 Lớp | ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal,
-                                            color: Hexcolor('#787878'))),
-                                    Container(
-                                      child: new Image(
-                                        image: AssetImage('assets/ic_time.png'),
-                                        height: 18.0,
-                                        width: 25.0,
+                              margin: const EdgeInsets.only(top: 15.0),
+                              child: Stack(
+                                children: <Widget>[
+                                  Image(
+                                      image:
+                                          AssetImage('assets/logo_course.png')),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(height: 180.0),
+                                      Row(
+                                        children: <Widget>[
+                                          SizedBox(width: 8.0),
+                                          Text('Kỹ năng quản lý thời gian',
+                                              style: TextStyle(
+                                                  color: Hexcolor('#FFFFFF'),
+                                                  fontSize: 16.0,
+                                                  fontWeight:
+                                                      FontWeight.normal))
+                                        ],
                                       ),
-                                    ),
-                                    Text('07 ngày',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal)),
-                                  ],
-                                ),
-                                SizedBox(height: 5.0),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                      left: 5.0,
-                                      top: 10.0,
-                                      bottom: 10.0,
-                                      right: 20.0),
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: new Container(
-                                      height: 35,
-                                      width: MediaQuery.of(context).size.width /
-                                          3.2,
-                                      decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                            colors: [
-                                              Hexcolor('#FAA244'),
-                                              Hexcolor('#FF8400')
-                                            ],
+                                      SizedBox(height: 10.0),
+                                      Wrap(
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
+                                        children: <Widget>[
+                                          Container(
+                                            child: new Image(
+                                                image: AssetImage(
+                                                    'assets/ic_students.png'),
+                                                color: Hexcolor('#FFFFFF'),
+                                                height: 18,
+                                                width: 25),
                                           ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(50))),
-                                      child: Center(
-                                        child: Text(
-                                          'Đăng ký'.toUpperCase(),
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                          Text('30 | ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Hexcolor('#FFFFFF'))),
+                                          Container(
+                                            margin: const EdgeInsets.only(
+                                                bottom: 1.0),
+                                            child: new Image(
+                                                image: AssetImage(
+                                                    'assets/ic_class.png'),
+                                                color: Hexcolor('#FFFFFF'),
+                                                height: 18.0,
+                                                width: 25.0),
+                                          ),
+                                          Text('05 Lớp | ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Hexcolor('#FFFFFF'))),
+                                          Container(
+                                            child: new Image(
+                                              image: AssetImage(
+                                                  'assets/ic_time.png'),
+                                              color: Hexcolor('#FFFFFF'),
+                                              height: 18.0,
+                                              width: 25.0,
+                                            ),
+                                          ),
+                                          Text('7d 18h',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Hexcolor('#FFFFFF'))),
+                                        ],
                                       ),
-                                    ),
+                                      SizedBox(height: 15.0),
+                                      LinearPercentIndicator(
+                                        width: 200.0,
+                                        lineHeight: 2.0,
+                                        percent: 0.75,
+                                        backgroundColor: Hexcolor('#FFFFFF'),
+                                        progressColor: Hexcolor('#E8943A'),
+                                      )
+                                    ],
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
+                                ],
+                              )),
                         )
                       ],
                     ));
@@ -335,15 +312,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var assetsImage = new AssetImage('assets/open.png');
-    var image = new Image(image: assetsImage, width: 200.0, height: 200.0);
+//    var assetsImage = new AssetImage('assets/open.png');
+//    var image = new Image(image: assetsImage, width: 200.0, height: 200.0);
 
     return Scaffold(
       body: Container(
           child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 50),
+            SizedBox(height: 100),
 //            Container(
 //                padding: EdgeInsets.only(left: 20, right: 10),
 //                margin: EdgeInsets.only(top: 30, left: 20, right: 20),
