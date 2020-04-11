@@ -32,11 +32,11 @@ dependencies:
   logger: any
   flutter_calendar_carousel: ^1.4.10
   flutter_cache_manager: ^0.3.2
-  chewie: any
   video_player: any
   hexcolor:  1.0.1
   percent_indicator: ^2.1.1
   flappy_search_bar: ^1.7.2
+  custom_chewie : ^0.7.0
 module:
   androidX: true
 dev_dependencies:
@@ -85,6 +85,8 @@ flutter:
     - assets/logo_result.png
     - assets/logo_meeting.png
     - assets/logo_course.png
+    - assets/ic_classes_detail.png
+    - assets/ic_dropdow.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

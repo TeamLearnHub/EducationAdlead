@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailPage();
+                                return ClassesDetailPage(classesModel: project);
                               }));
                             },
                             child: Center(
@@ -311,13 +311,13 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailPage();
+                                return ClassesDetailPage(classesModel: project);
                               }));
                             },
                             onLongPress: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailPage();
+                                return ClassesDetailPage(classesModel: project);
                               }));
                             },
                             child: Container(
