@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/views/classes/tabIntroduction.dart';
+import 'package:flutter_app/views/classes/tabLession.dart';
 import 'package:flutter_app/views/classes/tabListClass.dart';
-import 'package:flutter_app/views/test/test.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:video_player/video_player.dart';
 
@@ -71,7 +71,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   ];
   final List<Icons> icons = [];
 
-  final _pageoption = [TabListClassPage(), TabIntroductionApp(), MyHomePage()];
+  final _pageoption = [TabListClassPage(), TabIntroductionPage(), TabLessionPage()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -210,7 +210,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
     // TODO: implement build
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Hexcolor('f5f6f9'),
       body: Container(
           width: double.maxFinite,
@@ -239,9 +239,10 @@ class ClassesDetailState extends State<ClassesDetailPage> {
                 SizedBox(height: 15.0),
                 titleClassesDetail(),
                 SizedBox(height: 10.0),
-                Image(
-                    image: AssetImage('assets/ic_line_big.png'),
-                    color: Hexcolor('#E5E5E5')),
+                Container(
+                  margin: const EdgeInsets.only(left: 25.0, right: 10.0),
+                  child: Image(image: AssetImage('assets/ic_line_big.png')),
+                ),
                 SizedBox(height: 10.0),
                 Container(
                   height: 40.0,
@@ -262,8 +263,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
                                     : Hexcolor('f5f6f9'),
                                 height: 40.0,
                                 child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
                                       option[index],

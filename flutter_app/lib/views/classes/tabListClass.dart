@@ -505,7 +505,10 @@ class TabListClassState extends State<TabListClassPage> {
                           }))),
               listClassWidget(),
               SizedBox(height: 15.0),
-              Image(image: AssetImage('assets/ic_line_big.png')),
+              Container(
+                margin: const EdgeInsets.only(left: 35.0, right: 10.0),
+                child: Image(image: AssetImage('assets/ic_line_big.png')),
+              ),
               SizedBox(height: 15.0),
               allClassesWidget()
             ],

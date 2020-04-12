@@ -1,20 +1,11 @@
 import 'dart:convert';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/classes_model.dart';
-import 'package:flutter_app/service/Webservice.dart';
 
-class TabLessionApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      home: TabLessionPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+import 'classes_detail.dart';
 
 class TabLessionPage extends StatefulWidget {
   @override
@@ -27,19 +18,12 @@ class TabLessionPage extends StatefulWidget {
 class TabLessionState extends State<TabLessionPage> {
   List<ClassesModel> _listClasses = List<ClassesModel>();
 
-  Future _getClasses() {
-    Webservice().load(ClassesModel.all).then((classesModel) => {
-          setState(() {
-            _listClasses = classesModel;
-            print("bai giang " + _listClasses[0].avatar);
-          })
-        });
-  }
   List<ClassesModel> parseClasses(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed
+    _listClasses = parsed
         .map<ClassesModel>((json) => ClassesModel.fromJson(json))
         .toList();
+    return _listClasses.sublist(0, 3);
   }
 
   Future<List<ClassesModel>> fetchClasses() async {
@@ -52,7 +36,7 @@ class TabLessionState extends State<TabLessionPage> {
     }
   }
 
-  Widget projectWidget() {
+  Widget listLessionWidget() {
     return FutureBuilder(
         future: fetchClasses(),
         builder: (BuildContext context, AsyncSnapshot projectSnap) {
@@ -68,71 +52,115 @@ class TabLessionState extends State<TabLessionPage> {
               ),
             );
           }
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: projectSnap?.data?.length ?? 0,
-            itemBuilder: (context, index) {
-              ClassesModel project = projectSnap?.data[index];
-              print(" -------" + project.avatar);
-              return Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 8.0,
+          return Card(
+            margin: EdgeInsets.all(10.0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(0.0)),
+            color: Hexcolor('#FFFFFF'),
+            elevation: 2,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  constraints: BoxConstraints(maxWidth: 355),
+                  margin:
+                  const EdgeInsets.only(top: 15.0, left: 10.0),
+                  child: Text(
+                    'Bài 1 : Sắp xếp thời gian làm việc khoa học',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.00),
                   ),
-                  child: Row(
-                    children: <Widget>[
-                      Center(
-                        child: Image.network(project.avatar,
-                            height: 120, width: 120),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: ClampingScrollPhysics(),
+                  itemCount: projectSnap?.data?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    ClassesModel project = projectSnap?.data[index];
+                    print(" -------" + project.avatar);
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailPage();
+                              }));
+                            },
+                            child: Center(
+                              child: Image.network(project?.avatar,
+                                  height: 130, width: 115),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailPage();
+                              }));
+                            },
+                            onLongPress: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ClassesDetailPage();
+                              }));
+                            },
+                            child: Container(
+                              constraints: BoxConstraints(maxWidth: 225),
+                              margin:
+                                  const EdgeInsets.only(top: 35.0, left: 10.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 205),
+                                    child: Text(
+                                        'Vì sao phải sắp xếp thời gian làm việc khoa học',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        child: new Image(
+                                          image:
+                                              AssetImage('assets/ic_time.png'),
+                                          height: 18.0,
+                                          width: 25.0,
+                                        ),
+                                      ),
+                                      Text('15/06/2020',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.normal)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 25.0),
+                                  Image(
+                                      image: AssetImage('assets/ic_line.png')),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 10.0),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Text('Kỹ năng quản lý thời gian',
-                                    style: TextStyle(color: Colors.black))
-                              ],
-                            ),
-                            SizedBox(height: 10.0),
-                            Row(
-                              children: <Widget>[
-                                Container(
-                                  child: Icon(Icons.person),
-                                ),
-                                Text('30M',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold))
-                              ],
-                            ),
-                            SizedBox(height: 10.0),
-                            Row(
-                              children: <Widget>[
-                                Container(
-                                  margin: const EdgeInsets.only(bottom: 8.0),
-                                  child: Icon(Icons.home),
-                                ),
-                                Text('05 Lớp',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                Container(
-                                    margin: const EdgeInsets.only(
-                                        left: 25.0, right: 25.0)),
-                                Container(
-                                  child: Icon(Icons.closed_caption),
-                                ),
-                                Text('07 ngày 18 giờ',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ));
-            },
+                    );
+                  },
+                )
+              ],
+            ),
           );
         });
   }
@@ -141,7 +169,11 @@ class TabLessionState extends State<TabLessionPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: projectWidget(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[listLessionWidget()],
+        ),
+      ),
     );
   }
 }
