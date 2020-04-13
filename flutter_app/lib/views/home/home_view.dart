@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
 import 'package:flutter_app/views/course/my_course.dart';
+import 'package:flutter_app/views/course/my_course_detail.dart';
 import 'package:flutter_app/views/course/my_course_home.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
@@ -101,13 +102,13 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return MyCoursePage();
+                              return MyCourseDetailPage(classesModel: project);
                             }));
                           },
                           onLongPress: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return MyCoursePage();
+                              return MyCourseDetailPage(classesModel: project);
                             }));
                           },
                           child: Container(

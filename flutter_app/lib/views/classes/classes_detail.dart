@@ -71,7 +71,11 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   ];
   final List<Icons> icons = [];
 
-  final _pageoption = [TabListClassPage(), TabIntroductionPage(), TabLessionPage()];
+  final _pageoption = [
+    TabListClassPage(),
+    TabIntroductionPage(),
+    TabLessionPage()
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -174,7 +178,9 @@ class ClassesDetailState extends State<ClassesDetailPage> {
                       margin: const EdgeInsets.only(
                           left: 5.0, top: 10.0, bottom: 10.0, right: 20.0),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          showDialogConfirm(context);
+                        },
                         child: new Container(
                           height: 35,
                           width: MediaQuery.of(context).size.width / 3.2,
@@ -204,6 +210,47 @@ class ClassesDetailState extends State<ClassesDetailPage> {
             )
           ],
         ));
+  }
+
+  void showDialogConfirm(BuildContext context) {
+    Dialog confirmDialog = Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      child: Container(
+        height: 200.0,
+        width: 200.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: Center(
+                  child: Text(
+                    'Cảm ơn bạn đã đăng ký khoá học này. Hãy chờ thông tin kiểm duyệt từ ban quản lý!',
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(color: Hexcolor('#212121'), fontSize: 16.0),
+                  ),
+                )),
+            SizedBox(height: 15.0),
+            Image(image: AssetImage('assets/ic_line_big.png')),
+            SizedBox(height: 15.0),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Đồng ý'.toUpperCase(),
+                style: TextStyle(fontSize: 18.0, color: Hexcolor('#AA3234'),fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    showDialog(
+        context: context, builder: (BuildContext context) => confirmDialog);
   }
 
   @override
