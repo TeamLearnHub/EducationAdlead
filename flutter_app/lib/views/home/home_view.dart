@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
-import 'package:flutter_app/views/course/my_course.dart';
 import 'package:flutter_app/views/course/my_course_detail.dart';
 import 'package:flutter_app/views/course/my_course_home.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import 'all_classes_home.dart';
 
 class HomePage extends StatefulWidget {
@@ -212,16 +210,13 @@ class _HomePageState extends State<HomePage> {
           height: 225.0,
           width: double.maxFinite,
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text('Lộ trình học tập ',
-                style: TextStyle(
-                    color: Hexcolor('#FFFFFF'),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0)),
-            SizedBox(width: 20.0)
-          ],
+        Container(
+          margin: const EdgeInsets.all(15.0),
+          child: Text('Lộ trình học tập ',
+              style: TextStyle(
+                  color: Hexcolor('#FFFFFF'),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0)),
         )
       ],
     );

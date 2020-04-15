@@ -223,13 +223,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.10"
-  flutter_launcher_icons:
+  flutter_rating_bar:
     dependency: "direct main"
     description:
-      name: flutter_launcher_icons
+      name: flutter_rating_bar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.4"
+    version: "3.0.1+1"
   flutter_staggered_grid_view:
     dependency: transitive
     description:
@@ -612,7 +612,7 @@ packages:
     source: hosted
     version: "2.0.8"
   video_player:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: video_player
       url: "https://pub.dartlang.org"

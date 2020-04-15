@@ -6,6 +6,8 @@ import 'package:flutter_app/models/classes_model.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:video_player/video_player.dart';
 
+import 'my_course_detail_tab.dart';
+
 class MyCourseDetailPage extends StatefulWidget {
   final ClassesModel classesModel;
 
@@ -185,10 +187,15 @@ class MyCourseDetailState extends State<MyCourseDetailPage> {
             Align(
               alignment: Alignment.bottomCenter,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return CourseDetailTabPage();
+                  }));
+                },
                 child: new Container(
                   height: 50,
-                  width: MediaQuery.of(context).size.width/0.5,
+                  width: MediaQuery.of(context).size.width / 0.5,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Hexcolor('#FAA244'), Hexcolor('#FF8400')],
