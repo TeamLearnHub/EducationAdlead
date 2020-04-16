@@ -6,19 +6,7 @@ import 'package:flutter_app/views/home/home_tab.dart';
 import 'package:flutter_app/views/login/login_contact.dart';
 import 'package:flutter_app/views/login/login_presenter.dart';
 import 'package:hexcolor/hexcolor.dart';
-
-class LoginApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      title: 'Login',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: LoginPage(),
-    );
-  }
-}
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -37,13 +25,29 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
   @override
   void initState() {
     // TODO: implement initState
-    SystemChrome.setEnabledSystemUIOverlays([]);
     _preseneter = LoginPreseneter(this);
     super.initState();
   }
 
+  Future<String> _nameSaver() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('name2', 'tien dat');
+    prefs.setString('school2', 'bach khoa ');
+    return 'saved';
+  }
+
+  _nameRetriever() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final name = prefs.getString('name2') ?? '';
+    final school = prefs.getString('school2') ?? '';
+
+    print(name);
+    print(school);
+  }
+
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     var assetsImage = new AssetImage('assets/ic_logo.png');
     var image = new Image(image: assetsImage, width: 200.0, height: 120.0);
     // TODO: implement build
@@ -111,6 +115,11 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                   SizedBox(height: 60),
                   InkWell(
                     onTap: () {
+                      setState(() {
+                        _nameSaver().then((_) {
+                          _nameRetriever();
+                        });
+                      });
 //                      Preferences.setToken("ojsjjsjjsjs");
 //                    print('hello token = ' +Preferences.getToken());
 //                      _preseneter.login(cntrlEmail.toString(), cntrlPassword.toString());
@@ -120,12 +129,11 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                           Preferences.clear();
                           return HomeTabApp();
                         }));
-                        print(Preferences.getToken());
                       } else {
 //                        print('hello token = ' +Preferences.getToken());
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return  HomeTabApp();
+                          return HomeTabApp();
                         }));
                       }
                     },

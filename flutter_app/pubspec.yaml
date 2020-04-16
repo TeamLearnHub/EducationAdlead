@@ -89,6 +89,7 @@ flutter:
     - assets/ic_classes_detail.png
     - assets/ic_dropdow.png
     - assets/ic_checkbox.png
+    - assets/ic_download.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

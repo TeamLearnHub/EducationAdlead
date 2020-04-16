@@ -29,7 +29,7 @@ class MyCourseDetailState extends State<MyCourseDetailPage> {
     VideoPlayerController.network(
         'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
     aspectRatio: 3 / 2,
-    autoPlay: true,
+    autoPlay: false,
     looping: true,
     showControls: true,
   );

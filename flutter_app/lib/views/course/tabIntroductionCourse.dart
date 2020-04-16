@@ -28,7 +28,7 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Tất cả các khoá học',
+                'Tất quan khoá học',
                 style: TextStyle(
                     color: Hexcolor('#212121'),
                     fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
                 'Toán học được sử dụng trên khắp thế giới như một công cụ thiết yếu trong nhiều lĩnh vực, bao gồm khoa học, kỹ thuật, y học, và tài chính. Toán học ứng dụng, một nhánh toán học liên quan đến việc ứng dụng kiến thức toán học vào những lĩnh vực khác, thúc đẩy và sử dụng những phát minh toán học mới, từ đó đã dẫn đến việc phát triển nên những ngành toán hoàn toàn mới, chẳng hạn như thống kê và lý thuyết trò chơi.',
                 style: TextStyle(
                     color: Hexcolor('#212121'),
-                    fontSize: 14.0,
+                    fontSize: 15.0,
                     fontWeight: FontWeight.normal),
                 textAlign: TextAlign.center),
           ),
@@ -171,10 +171,11 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
                       color: Hexcolor('#212121'),
                       fontSize: 16.0,
                       fontWeight: FontWeight.normal)),
-              SizedBox(width: 100),
+              SizedBox(width: 150),
               RatingBar(
                 initialRating: 5,
                 minRating: 1,
+                itemSize: 30,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
                 itemCount: 5,
@@ -200,6 +201,128 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
     );
   }
 
+  Widget documentWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+          child: Align(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text('Tài liệu tham khảo',
+                  style: TextStyle(
+                      color: Hexcolor('#212121'),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
+            ],
+          )),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 16.0, left: 6.0, right: 16.0),
+          child: Container(
+              margin: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Văn hoá làm việc tập thể tại các công sở',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 30.0),
+                  Image(image: AssetImage('assets/ic_download.png'))
+                ],
+              )),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 16.0, left: 6.0, right: 16.0),
+          child: Container(
+              margin: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Văn hoá làm việc tập thể tại các công sở',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 30.0),
+                  Image(image: AssetImage('assets/ic_download.png'))
+                ],
+              )),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 16.0, left: 6.0, right: 16.0),
+          child: Container(
+              margin: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Văn hoá làm việc tập thể tại các công sở',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 30.0),
+                  Image(image: AssetImage('assets/ic_download.png'))
+                ],
+              )),
+        ),
+      ],
+    );
+  }
+
+  Widget finishWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+          child: Align(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text('Điều kiện hoàn thành',
+                  style: TextStyle(
+                      color: Hexcolor('#212121'),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
+            ],
+          )),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+          child: Align(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text('Học tập theo đúng lộ trình',
+                  style: TextStyle(
+                      color: Hexcolor('#212121'),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.normal)),
+            ],
+          )),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 16.0),
+          child: Align(
+            child: Container(
+              margin: const EdgeInsets.all(10.0),
+              child: Text('Hoàn thành đầy đủ các bài học và các bài kiểm tra',
+                  style: TextStyle(
+                      color: Hexcolor('#212121'),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.normal)),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -220,6 +343,20 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
           ),
           SizedBox(height: 10.0),
           teacherWidget(),
+          SizedBox(height: 10.0),
+          Container(
+            margin: const EdgeInsets.only(left: 25.0, right: 10.0),
+            child: Image(image: AssetImage('assets/ic_line_big.png')),
+          ),
+          SizedBox(height: 10.0),
+          documentWidget(),
+          SizedBox(height: 10.0),
+          Container(
+            margin: const EdgeInsets.only(left: 25.0, right: 10.0),
+            child: Image(image: AssetImage('assets/ic_line_big.png')),
+          ),
+          SizedBox(height: 10.0),
+          finishWidget()
         ],
       ),
     );
