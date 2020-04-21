@@ -90,6 +90,10 @@ flutter:
     - assets/ic_dropdow.png
     - assets/ic_checkbox.png
     - assets/ic_download.png
+    - assets/avartar.jpg
+    - assets/ic_like.png
+    - assets/ic_unlike.png
+    - assets/ic_comment.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

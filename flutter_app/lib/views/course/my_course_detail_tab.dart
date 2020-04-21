@@ -2,8 +2,8 @@ import 'package:custom_chewie/custom_chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/views/classes/tabIntroduction.dart';
 import 'package:flutter_app/views/classes/tabLession.dart';
+import 'package:flutter_app/views/comment/comment_view.dart';
 import 'package:flutter_app/views/course/tabIntroductionCourse.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:video_player/video_player.dart';
@@ -44,7 +44,7 @@ class CourseDetailTabState extends State<CourseDetailTabPage> {
 
   final _pageoption = [
     TabIntroductionCoursePage(),
-    TabIntroductionPage(),
+    CommentPage(),
     TabLessionPage()
   ];
 
