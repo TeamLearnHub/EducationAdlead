@@ -14,25 +14,42 @@ class _CommentPageState extends State<CommentPage> {
   bool a = false;
   List<String> _comment = [];
   List<String> _question = [];
-  bool _isComment = true;
+  String test = null;
 
   void _addComment(String val) {
     setState(() {
       _comment.add(val);
-//      if (_isComment) {
-//        _comment.add(val);
-//      } else {
-//        _question.add(val);
-//      }
+    });
+  }
+
+  void _addQuestion(String val) {
+    setState(() {
+      _question.add(val);
+      test = val;
+      print(test);
     });
   }
 
   Widget _buildCommentList() {
-    return ListView.builder(itemBuilder: (context, index) {
-      if (index < _comment.length) {
-        return _buildCommentItem(_comment[index]);
-      }
-    });
+    return ListView.builder(
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          if (index < _comment.length) {
+            return _buildCommentItem(_comment[index]);
+          }
+        });
+  }
+
+  Widget _buildQuestionList() {
+    return ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: _question.length,
+        itemBuilder: (context, index) {
+          if (index < _question.length) {
+            return _buildQuestionItem(_question[index]);
+          }
+        });
   }
 
   Widget _buildCommentItem(String comment) {
@@ -69,7 +86,7 @@ class _CommentPageState extends State<CommentPage> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                        left: 5.0, top: 25.0, bottom: 8.0),
+                        left: 7.0, top: 25.0, bottom: 8.0),
                     child: Text(' | 12h',
                         style: TextStyle(
                             fontWeight: FontWeight.normal, fontSize: 16.0)),
@@ -78,53 +95,48 @@ class _CommentPageState extends State<CommentPage> {
               ),
               Container(
                 margin: const EdgeInsets.only(
-                    left: .0, right: 5.0, bottom: 10.0, top: 2),
+                    left: 0, right: 5.0, bottom: 10.0, top: 2),
+                width: 300,
                 child: Text(comment,
+                    textAlign: TextAlign.justify,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 5,
                     style:
-                        TextStyle(fontSize: 15.0, color: Hexcolor('#212121'))),
+                        TextStyle(fontSize: 15.5, color: Hexcolor('#212121'))),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: const EdgeInsets.only(left: 0.0, top: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Image(image: AssetImage('assets/ic_like.png')),
-                        SizedBox(width: 10),
-                        Text('17',
-                            style: TextStyle(
-                                color: Hexcolor('#AA3234'), fontSize: 16.0)),
-                        SizedBox(width: 30.0),
-                        Image(image: AssetImage('assets/ic_unlike.png')),
-                        SizedBox(width: 30.0),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              a = true;
-                            });
-                          },
-                          child:
-                              Image(image: AssetImage('assets/ic_comment.png')),
-                        ),
-                        SizedBox(width: 10),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10.0),
-                          child: Text('2',
-                              style: TextStyle(
-                                  color: Hexcolor('#AA3234'), fontSize: 16.0)),
-                        )
-                      ],
-                    ),
+                    margin: const EdgeInsets.only(left: 5.0),
+                    child: Image(image: AssetImage('assets/ic_like.png')),
                   ),
+                  SizedBox(width: 10),
+                  Text('17',
+                      style: TextStyle(
+                          color: Hexcolor('#AA3234'), fontSize: 16.0)),
+                  SizedBox(width: 30.0),
+                  Image(image: AssetImage('assets/ic_unlike.png')),
+                  SizedBox(width: 30.0),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        a = true;
+                      });
+                    },
+                    child: Image(image: AssetImage('assets/ic_comment.png')),
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10.0),
+                    child: Text('2',
+                        style: TextStyle(
+                            color: Hexcolor('#AA3234'), fontSize: 16.0)),
+                  )
                 ],
               ),
-              Visibility(
-                  child: login(),
-                  visible: a)
+              Visibility(child: question(), visible: a)
             ],
           ),
         ],
@@ -132,157 +144,120 @@ class _CommentPageState extends State<CommentPage> {
     );
   }
 
-  Widget login(){
+  Widget _buildQuestionItem(String question) {
+    if (question != null) {
+      return Container(
+        color: Hexcolor('FEFAF5'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.only(
+                  left: 15.0, right: 10.0, bottom: 15.0, top: 15.0),
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/avartar.jpg'),
+                radius: 30,
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(
+                          left: 5.0, right: 5.0, top: 25.0, bottom: 8.0),
+                      child: Text(
+                        'Nguyễn Manh Cuong',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16.0),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(
+                          left: 5.0, top: 25.0, bottom: 8.0),
+                      child: Text(' | 12h',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 16.0)),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                      left: 0, right: 5.0, bottom: 10.0, top: 2),
+                  width: 200,
+                  child: Text(question,
+                      textAlign: TextAlign.justify,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 5,
+                      style:
+                      TextStyle(fontSize: 15.5, color: Hexcolor('#212121'))),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(left: 0.0, top: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Image(image: AssetImage('assets/ic_like.png')),
+                          SizedBox(width: 10),
+                          Text('17',
+                              style: TextStyle(
+                                  color: Hexcolor('#AA3234'), fontSize: 16.0)),
+                          SizedBox(width: 30.0),
+                          Image(image: AssetImage('assets/ic_unlike.png')),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    } else {
+      return Text("", style: TextStyle(fontSize: 25));
+    }
+  }
+
+  Widget question() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: MediaQuery.of(context).size.height / 2,
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.only(top: 40),
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width / 1.2,
-                height: 50,
-                padding:
-                EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
-                    color: Hexcolor('#F5F6F9'),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black12, blurRadius: 5)
-                    ]),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Tên đăng nhập',
-                  ),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 1.2,
-                height: 50,
-                margin: EdgeInsets.only(top: 32),
-                padding:
-                EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
-                    color: Hexcolor('#F5F6F9'),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black12, blurRadius: 5)
-                    ]),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Password',
-                  ),
-                ),
-              ),
-              SizedBox(height: 60),
-              InkWell(
-                onTap: () {
-
-//                      Preferences.setToken("ojsjjsjjsjs");
-//                    print('hello token = ' +Preferences.getToken());
-//                      _preseneter.login(cntrlEmail.toString(), cntrlPassword.toString());
-                },
-                child: new Container(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Hexcolor('#FAA244'), Hexcolor('#FF8400')],
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(50))),
-                  child: Center(
-                    child: Text(
-                      'Đăng nhập'.toUpperCase(),
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Text(
-                    'Quên mật khẩu ?',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ),
-            ],
+          width: 320,
+          height: 80,
+          child: TextFormField(
+            onFieldSubmitted: (String submittedStr) {
+              _addQuestion(submittedStr);
+            },
+            autocorrect: true,
+            style: TextStyle(fontSize: 18, height: 2.5),
+            decoration: InputDecoration(
+                prefixIcon: CircleAvatar(
+                    backgroundImage: AssetImage('assets/avartar.jpg'),
+                    radius: 25),
+                hintStyle: TextStyle(color: Hexcolor('#434343')),
+                border: InputBorder.none,
+                filled: true,
+                contentPadding: const EdgeInsets.all(10.0),
+                hintText: "Phản hồi của bạn"),
           ),
-        )
+        ),
+        _buildQuestionItem(test)
+//        Expanded(child: SizedBox(height: 300.0, child: _buildQuestionList()))
       ],
     );
   }
-
-//  Widget _buildQuestionItem(String comment) {
-////    return ListTile(title: Text(comment));
-//    return Column(
-//      children: <Widget>[
-//        Row(
-//          children: <Widget>[
-//            SizedBox(height: 10),
-//            Container(
-//              margin: const EdgeInsets.only(left: 100.0, right: 5.0, top: 10.0),
-//              child: CircleAvatar(
-//                backgroundImage: NetworkImage(
-//                    "https://www.facebook.com/photo.php?fbid=1223906294484690&set=a.253994294809233&type=3&theater"),
-//              ),
-//            ),
-//            Container(
-//              margin: const EdgeInsets.only(left: 5.0, right: 10.0, top: 10.0),
-//              child: Text('Nguyễn Tiến Đạt',
-//                  style:
-//                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0)),
-//            ),
-//            Container(
-//              margin: const EdgeInsets.only(right: 5.0, top: 10.0),
-//              child: Text(comment,
-//                  style:
-//                      TextStyle(fontWeight: FontWeight.w500, fontSize: 15.0)),
-//            )
-//          ],
-//        ),
-//        SizedBox(height: 10.0),
-//        Row(
-//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//          children: <Widget>[
-//            Container(
-//              margin: const EdgeInsets.only(left: 155.0),
-//              child: Text('12 giờ ',
-//                  style:
-//                      TextStyle(fontWeight: FontWeight.w500, fontSize: 15.0)),
-//            ),
-//            Container(
-//              margin: const EdgeInsets.only(left: 0.0),
-//              child: Text('Thích',
-//                  style:
-//                      TextStyle(fontWeight: FontWeight.w500, fontSize: 15.0)),
-//            ),
-//            Container(
-//                margin: const EdgeInsets.only(left: 0.0, right: 45.0),
-//                child: GestureDetector(
-//                  onTap: () {
-//                    setState(() {
-//                      a = true;
-//                    });
-//                  },
-//                  child: Text('Trả lời',
-//                      style: TextStyle(
-//                          fontWeight: FontWeight.w500, fontSize: 15.0)),
-//                )),
-//          ],
-//        ),
-//        Text('Hello LearnHub',style: TextStyle(fontSize: 25.0)),
-//
-//      ],
-//    );
-//  }
 
   @override
   void initState() {
@@ -315,7 +290,7 @@ class _CommentPageState extends State<CommentPage> {
                   hintStyle: TextStyle(color: Hexcolor('#434343')),
                   border: InputBorder.none,
                   filled: true,
-                  contentPadding: const EdgeInsets.all(20.0),
+                  contentPadding: const EdgeInsets.all(10.0),
                   hintText: "Bình luận của bạn"),
             ),
           ),
