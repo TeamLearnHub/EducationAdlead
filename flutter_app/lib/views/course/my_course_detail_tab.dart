@@ -23,6 +23,17 @@ class CourseDetailTabState extends State<CourseDetailTabPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    playerWidget.controller.addListener(() {
+      if (playerWidget.controller.value.position ==
+          playerWidget.controller.value.position) {
+        print('video ended');
+//        SchedulerBinding.instance.addPostFrameCallback((_) {
+//          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+//            return MyAppTab();
+//          }));
+//        });
+      }
+    });
   }
 
   final playerWidget = new Chewie(

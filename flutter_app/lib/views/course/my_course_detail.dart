@@ -37,7 +37,6 @@ class MyCourseDetailState extends State<MyCourseDetailPage> {
   @override
   void initState() {
     // TODO: implement initState
-
     super.initState();
   }
 

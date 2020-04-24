@@ -36,32 +36,10 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   @override
   void initState() {
     // TODO: implement initState
-    _videoPlayerController1 = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
-    _videoPlayerController2 = VideoPlayerController.network(
-        'https://www.sample-videos.com/video123/mp4/480/asdasdas.mp4');
-//    _chewieController = ChewieController(
-//        videoPlayerController: _videoPlayerController1,
-//        allowFullScreen: true,
-//        aspectRatio: 16 / 9,
-//        autoPlay: true,
-//        looping: true,
-//        errorBuilder: (context, errorMessage) {
-//          return Center(
-//            child: Text(errorMessage, style: TextStyle(color: Colors.white)),
-//          );
-//        });
+    _videoPlayerController1 =
+        VideoPlayerController.network(classesModel.file_mp4);
     super.initState();
   }
-
-  final playerWidget = new Chewie(
-    VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
-    aspectRatio: 3 / 2,
-    autoPlay: true,
-    looping: true,
-    showControls: true,
-  );
 
   TabController controller;
   final List<String> option = [
@@ -242,7 +220,10 @@ class ClassesDetailState extends State<ClassesDetailPage> {
               },
               child: Text(
                 'Đồng ý'.toUpperCase(),
-                style: TextStyle(fontSize: 18.0, color: Hexcolor('#AA3234'),fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 18.0,
+                    color: Hexcolor('#AA3234'),
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ],
@@ -269,8 +250,14 @@ class ClassesDetailState extends State<ClassesDetailPage> {
                 Stack(
                   alignment: Alignment.topRight,
                   children: <Widget>[
-                    playerWidget,
-//                    Chewie(
+                    Chewie(
+                      _videoPlayerController1,
+                      aspectRatio: 3 / 2,
+                      autoPlay: true,
+                      looping: true,
+                      showControls: true,
+                    ),
+//                    Chewie(x
 //                      controller: _chewieController,
 //                    ),
 //                    GestureDetector(
@@ -343,7 +330,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
     _videoPlayerController1.dispose();
     _videoPlayerController2.dispose();
     // _chewieController.dispose();
-    playerWidget.controller.dispose();
+    //playerWidget.controller.dispose();
 
     super.dispose();
     super.dispose();
