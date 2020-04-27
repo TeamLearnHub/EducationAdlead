@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                           fontSize: 18.00),
                     ),
-                    SizedBox(width: 105.0),
+                    SizedBox(width: 60.0),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,
@@ -266,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           color: Hexcolor('#AA3234'),
                           fontWeight: FontWeight.bold,
-                          fontSize: 15.00,
+                          fontSize: 14.00,
                         ),
                       ),
                     )
@@ -284,8 +284,8 @@ class _HomePageState extends State<HomePage> {
                   print(" -------" + project.avatar);
                   return Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 8.0,
+                        horizontal: 8.0,
+                        vertical: 5.0,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -318,7 +318,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Container(
                               margin:
-                                  const EdgeInsets.only(top: 15.0, left: 12.0),
+                                  const EdgeInsets.only(top: 15.0, left: 5.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -329,7 +329,7 @@ class _HomePageState extends State<HomePage> {
                                       Text('Kỹ năng quản lý thời gian',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16.0,
+                                              fontSize: 13.0,
                                               fontWeight: FontWeight.bold))
                                     ],
                                   ),
@@ -342,8 +342,8 @@ class _HomePageState extends State<HomePage> {
                                         child: new Image(
                                             image: AssetImage(
                                                 'assets/ic_students.png'),
-                                            height: 18,
-                                            width: 25),
+                                            height: 15,
+                                            width: 15),
                                       ),
                                       Text('30M | ',
                                           style: TextStyle(
@@ -355,8 +355,8 @@ class _HomePageState extends State<HomePage> {
                                         child: new Image(
                                             image: AssetImage(
                                                 'assets/ic_class.png'),
-                                            height: 18.0,
-                                            width: 25.0),
+                                            height: 15.0,
+                                            width: 15.0),
                                       ),
                                       Text('05 Lớp | ',
                                           style: TextStyle(
@@ -366,8 +366,8 @@ class _HomePageState extends State<HomePage> {
                                         child: new Image(
                                           image:
                                               AssetImage('assets/ic_time.png'),
-                                          height: 18.0,
-                                          width: 25.0,
+                                          height: 15.0,
+                                          width: 15.0,
                                         ),
                                       ),
                                       Text('07 ngày',
@@ -456,7 +456,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                           fontSize: 18.00),
                     ),
-                    SizedBox(width: 135.0),
+                    SizedBox(width: 95.0),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,
@@ -469,7 +469,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           color: Hexcolor('#AA3234'),
                           fontWeight: FontWeight.bold,
-                          fontSize: 15.00,
+                          fontSize: 14.00,
                         ),
                       ),
                     )
@@ -487,7 +487,7 @@ class _HomePageState extends State<HomePage> {
                   print(" -------" + project.avatar);
                   return Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 16.0,
+                        horizontal: 8.0,
                         vertical: 8.0,
                       ),
                       child: Row(
@@ -498,7 +498,7 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailPage();
+                                return ClassesDetailPage(classesModel: project);
                               }));
                             },
                             child: Center(
@@ -510,17 +510,17 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailPage();
+                                return ClassesDetailPage(classesModel: project);
                               }));
                             },
                             onLongPress: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ClassesDetailPage();
+                                return ClassesDetailPage(classesModel: project);
                               }));
                             },
                             child: Container(
-                              constraints: BoxConstraints(maxWidth: 225),
+                              constraints: BoxConstraints(maxWidth: 195),
                               margin:
                                   const EdgeInsets.only(top: 35.0, left: 10.0),
                               child: Column(
@@ -530,14 +530,13 @@ class _HomePageState extends State<HomePage> {
                                   Wrap(
                                     alignment: WrapAlignment.end,
                                     children: <Widget>[
-                                      SizedBox(width: 6.0),
                                       Text(
                                           'Bồi dưỡng kỹ năng chăm sóc khách hàng',
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 1,
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16.0,
+                                              fontSize: 15.0,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -700,7 +699,7 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.bold,
                             fontSize: 18.00),
                       ),
-                      SizedBox(width: 145.0),
+                      SizedBox(width: 80.0),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(context,
@@ -713,7 +712,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                             color: Hexcolor('#AA3234'),
                             fontWeight: FontWeight.bold,
-                            fontSize: 15.00,
+                            fontSize: 14.00,
                           ),
                         ),
                       )
@@ -747,7 +746,7 @@ class _HomePageState extends State<HomePage> {
                                         fontSize: 18.0,
                                         color: Hexcolor('#434343'),
                                         fontWeight: FontWeight.bold)),
-                                SizedBox(width: 245.0),
+                                SizedBox(width: 200.0),
                                 Image(image: AssetImage('assets/ic_next.png'))
                               ],
                             ),
@@ -783,7 +782,7 @@ class _HomePageState extends State<HomePage> {
                                         fontSize: 18.0,
                                         color: Hexcolor('#434343'),
                                         fontWeight: FontWeight.bold)),
-                                SizedBox(width: 160.0),
+                                SizedBox(width: 110.0),
                                 Image(image: AssetImage('assets/ic_next.png'))
                               ],
                             ),
@@ -815,7 +814,7 @@ class _HomePageState extends State<HomePage> {
                                         fontSize: 18.0,
                                         color: Hexcolor('#434343'),
                                         fontWeight: FontWeight.bold)),
-                                SizedBox(width: 160.0),
+                                SizedBox(width: 110.0),
                                 Image(image: AssetImage('assets/ic_next.png'))
                               ],
                             ),

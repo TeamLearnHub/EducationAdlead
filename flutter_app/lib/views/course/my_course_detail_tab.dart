@@ -56,7 +56,7 @@ class CourseDetailTabState extends State<CourseDetailTabPage> {
   final _pageoption = [
     TabIntroductionCoursePage(),
     CommentPage(),
-    TabLessionPage()
+    CommentPage()
   ];
 
   void _onItemTapped(int index) {

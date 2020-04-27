@@ -34,18 +34,20 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.00),
               ),
-              SizedBox(width: 110.0),
+              SizedBox(width: 60.0),
               GestureDetector(
-                onTap: () {},
-                child: Text(
-                  'Xem thêm'.toUpperCase(),
-                  style: TextStyle(
-                    color: Hexcolor('#AA3234'),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.00,
-                  ),
-                ),
-              )
+                  onTap: () {},
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 100),
+                    child: Text(
+                      'Xem thêm'.toUpperCase(),
+                      style: TextStyle(
+                        color: Hexcolor('#AA3234'),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.00,
+                      ),
+                    ),
+                  ))
             ],
           )),
         ),
@@ -83,24 +85,25 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
           )),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-          child: Align(
+          padding: EdgeInsets.only(top: 16.0, left: 0.0, right: 1.0),
+          child: Container(
+              constraints: BoxConstraints(maxWidth: 300),
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text('Họ tên',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal)),
-              SizedBox(width: 185),
-              Text('Nguyễn Huy Anh',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold)),
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Họ tên',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 105),
+                  Text('Nguyễn Huy Anh',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold)),
+                ],
+              )),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -109,24 +112,25 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
         ),
         SizedBox(height: 10.0),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-          child: Align(
+          padding: EdgeInsets.only(top: 16.0, left: 0.0, right: 1.0),
+          child: Container(
+              constraints: BoxConstraints(maxWidth: 300),
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text('Trình độ',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal)),
-              SizedBox(width: 245),
-              Text('Thạc sĩ',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold)),
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Trình độ',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 165),
+                  Text('Thạc sĩ',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold)),
+                ],
+              )),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -135,24 +139,25 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
         ),
         SizedBox(height: 10.0),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-          child: Align(
+          padding: EdgeInsets.only(top: 16.0, left: 1.0, right: 1.0),
+          child: Container(
+              constraints: BoxConstraints(maxWidth: 300),
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text('Tuổi',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal)),
-              SizedBox(width: 315),
-              Text('30',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold)),
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Tuổi',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 235),
+                  Text('30',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold)),
+                ],
+              )),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -161,35 +166,36 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
         ),
         SizedBox(height: 10.0),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-          child: Align(
+          padding: EdgeInsets.only(top: 16.0, left: 1.0, right: 1.0),
+          child: Container(
+              constraints: BoxConstraints(maxWidth: 300),
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text('Đánh giá',
-                  style: TextStyle(
-                      color: Hexcolor('#212121'),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal)),
-              SizedBox(width: 150),
-              RatingBar(
-                initialRating: 5,
-                minRating: 1,
-                itemSize: 30,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: EdgeInsets.symmetric(horizontal: 0.0),
-                itemBuilder: (context, _) => Icon(
-                  Icons.star,
-                  color: Hexcolor('#AA3234'),
-                ),
-                onRatingUpdate: (rating) {
-                  print(rating);
-                },
-              )
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('Đánh giá',
+                      style: TextStyle(
+                          color: Hexcolor('#212121'),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal)),
+                  SizedBox(width: 75),
+                  RatingBar(
+                    initialRating: 5,
+                    minRating: 1,
+                    itemSize: 30,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 0.0),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star,
+                      color: Hexcolor('#AA3234'),
+                    ),
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
+                  )
+                ],
+              )),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -220,52 +226,52 @@ class TabIntroductionState extends State<TabIntroductionCoursePage> {
           )),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 6.0, right: 16.0),
+          padding: EdgeInsets.only(top: 5.0, left: 6.0, right: 1.0),
           child: Container(
+              constraints: BoxConstraints(maxWidth: 400),
               margin: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Wrap(
                 children: <Widget>[
                   Text('Văn hoá làm việc tập thể tại các công sở',
                       style: TextStyle(
                           color: Hexcolor('#212121'),
                           fontSize: 16.0,
                           fontWeight: FontWeight.normal)),
-                  SizedBox(width: 30.0),
+                  SizedBox(width: 0.0),
                   Image(image: AssetImage('assets/ic_download.png'))
                 ],
               )),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 6.0, right: 16.0),
+          padding: EdgeInsets.only(top: 5.0, left: 6.0, right: 1.0),
           child: Container(
+              constraints: BoxConstraints(maxWidth: 400),
               margin: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Wrap(
                 children: <Widget>[
                   Text('Văn hoá làm việc tập thể tại các công sở',
                       style: TextStyle(
                           color: Hexcolor('#212121'),
                           fontSize: 16.0,
                           fontWeight: FontWeight.normal)),
-                  SizedBox(width: 30.0),
+                  SizedBox(width: 0.0),
                   Image(image: AssetImage('assets/ic_download.png'))
                 ],
               )),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 16.0, left: 6.0, right: 16.0),
+          padding: EdgeInsets.only(top: 5.0, left: 6.0, right: 1.0),
           child: Container(
+              constraints: BoxConstraints(maxWidth: 400),
               margin: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Wrap(
                 children: <Widget>[
                   Text('Văn hoá làm việc tập thể tại các công sở',
                       style: TextStyle(
                           color: Hexcolor('#212121'),
                           fontSize: 16.0,
                           fontWeight: FontWeight.normal)),
-                  SizedBox(width: 30.0),
+                  SizedBox(width: 0.0),
                   Image(image: AssetImage('assets/ic_download.png'))
                 ],
               )),

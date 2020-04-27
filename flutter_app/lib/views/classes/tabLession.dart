@@ -62,8 +62,7 @@ class TabLessionState extends State<TabLessionPage> {
               children: <Widget>[
                 Container(
                   constraints: BoxConstraints(maxWidth: 355),
-                  margin:
-                  const EdgeInsets.only(top: 15.0, left: 10.0),
+                  margin: const EdgeInsets.only(top: 15.0, left: 10.0),
                   child: Text(
                     'Bài 1 : Sắp xếp thời gian làm việc khoa học',
                     style: TextStyle(
@@ -95,7 +94,7 @@ class TabLessionState extends State<TabLessionPage> {
                             },
                             child: Center(
                               child: Image.network(project?.avatar,
-                                  height: 130, width: 115),
+                                  height: 130, width: 105),
                             ),
                           ),
                           GestureDetector(
@@ -112,7 +111,6 @@ class TabLessionState extends State<TabLessionPage> {
                               }));
                             },
                             child: Container(
-                              constraints: BoxConstraints(maxWidth: 225),
                               margin:
                                   const EdgeInsets.only(top: 35.0, left: 10.0),
                               child: Column(
@@ -120,7 +118,7 @@ class TabLessionState extends State<TabLessionPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
-                                    constraints: BoxConstraints(maxWidth: 205),
+                                    constraints: BoxConstraints(maxWidth: 185),
                                     child: Text(
                                         'Vì sao phải sắp xếp thời gian làm việc khoa học',
                                         overflow: TextOverflow.ellipsis,
@@ -135,6 +133,8 @@ class TabLessionState extends State<TabLessionPage> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
+                                        constraints:
+                                            BoxConstraints(maxWidth: 185),
                                         child: new Image(
                                           image:
                                               AssetImage('assets/ic_time.png'),
@@ -148,8 +148,12 @@ class TabLessionState extends State<TabLessionPage> {
                                     ],
                                   ),
                                   SizedBox(height: 25.0),
-                                  Image(
-                                      image: AssetImage('assets/ic_line.png')),
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 165),
+                                    child: Image(
+                                        image:
+                                            AssetImage('assets/ic_line.png')),
+                                  )
                                 ],
                               ),
                             ),

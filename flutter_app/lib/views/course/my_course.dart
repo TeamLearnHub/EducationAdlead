@@ -72,13 +72,13 @@ class MyCourseState extends State<MyCoursePage> {
                   ClassesModel project = projectSnap?.data[index];
                   print(" -------" + project.avatar);
                   return new GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return MyCourseDetailPage(classesModel: project);
                       }));
                     },
-                    child:  Card(
+                    child: Card(
                       margin: EdgeInsets.all(10.0),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(0.0)),
@@ -97,48 +97,56 @@ class MyCourseState extends State<MyCoursePage> {
                                   CircleAvatar(
                                     radius: 30.0,
                                     backgroundImage:
-                                    AssetImage('assets/logo_class.png'),
+                                        AssetImage('assets/logo_class.png'),
                                     backgroundColor: Colors.transparent,
                                   ),
                                   SizedBox(width: 20.0),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text('Kỹ năng quản lý thời gian',
-                                          style: TextStyle(
-                                              color: Hexcolor('#212121'),
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.bold)),
-                                      SizedBox(height: 6.0),
-                                      Row(
-                                        children: <Widget>[
-                                          Text('Lớp K12  | ',
-                                              style: TextStyle(
-                                                  color: Hexcolor('#E8943A'),
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.normal)),
-                                          Text('Trạng thái : Active ',
-                                              style: TextStyle(
-                                                  color: Hexcolor('#E8943A'),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.normal))
-                                        ],
-                                      ),
-                                      SizedBox(height: 6.0),
-                                      LinearPercentIndicator(
-                                        width: 200.0,
-                                        lineHeight: 3.0,
-                                        percent: 0.5,
-                                        backgroundColor: Hexcolor('#e7e7e7'),
-                                        progressColor: Hexcolor('#AA3234'),
-                                      )
-                                    ],
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 220),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text('Kỹ năng quản lý thời gian',
+                                            style: TextStyle(
+                                                color: Hexcolor('#212121'),
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.bold)),
+                                        SizedBox(height: 6.0),
+                                        Wrap(
+                                          children: <Widget>[
+                                            Text('Lớp K12  | ',
+                                                style: TextStyle(
+                                                    color: Hexcolor('#E8943A'),
+                                                    fontSize: 14.0,
+                                                    fontWeight:
+                                                        FontWeight.normal)),
+                                            Text('Trạng thái : Active ',
+                                                style: TextStyle(
+                                                    color: Hexcolor('#E8943A'),
+                                                    fontSize: 16.0,
+                                                    fontWeight:
+                                                        FontWeight.normal))
+                                          ],
+                                        ),
+                                        SizedBox(height: 6.0),
+                                        LinearPercentIndicator(
+                                          width: 200.0,
+                                          lineHeight: 3.0,
+                                          percent: 0.5,
+                                          backgroundColor: Hexcolor('#e7e7e7'),
+                                          progressColor: Hexcolor('#AA3234'),
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
                               SizedBox(height: 15.0),
-                              Image(image: AssetImage('assets/ic_line_big.png')),
+                              Image(
+                                  image: AssetImage('assets/ic_line_big.png')),
                               SizedBox(height: 10.0),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -146,29 +154,63 @@ class MyCourseState extends State<MyCoursePage> {
                                 children: <Widget>[
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text('Giảng viên ',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.normal)),
+                                      Text('Giảng viên ',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.normal)),
                                       SizedBox(height: 8.0),
-                                      Text('Nguyễn Huy Anh ',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.bold)),
+                                      Text('Nguyễn Huy Anh ',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
                                       SizedBox(height: 13.0),
-                                      Text('Ngày bắt đầu',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.normal)),
+                                      Text('Ngày bắt đầu',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.normal)),
                                       SizedBox(height: 7.0),
-                                      Text('01/03/2020',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.bold)),
+                                      Text('01/03/2020',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                   SizedBox(width: 40.0),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text('Chứng chỉ ',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.normal)),
+                                      Text('Chứng chỉ ',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.normal)),
                                       SizedBox(height: 8.0),
-                                      Text('Chưa có',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.bold)),
+                                      Text('Chưa có',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
                                       SizedBox(height: 13.0),
-                                      Text('Ngày kết thúc',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.normal)),
+                                      Text('Ngày kết thúc',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.normal)),
                                       SizedBox(height: 7.0),
-                                      Text('03/03/2020',style: TextStyle(color: Hexcolor('#111111'),fontSize: 16.0,fontWeight: FontWeight.bold)),
+                                      Text('03/03/2020',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
                                     ],
                                   )
                                 ],

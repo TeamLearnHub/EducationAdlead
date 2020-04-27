@@ -201,57 +201,58 @@ class TabListClassState extends State<TabListClassPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 6.0),
-                                      Text('Kỹ năng quản lý thời gian',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.bold))
-                                    ],
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 175),
+                                    child: Text('Kỹ năng quản lý thời gian',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.bold)),
                                   ),
                                   SizedBox(height: 10.0),
-                                  Wrap(
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        child: new Image(
-                                            image: AssetImage(
-                                                'assets/ic_students.png'),
-                                            height: 18,
-                                            width: 25),
-                                      ),
-                                      Text('30M | ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.normal,
-                                              color: Hexcolor('#787878'))),
-                                      Container(
-                                        margin:
-                                            const EdgeInsets.only(bottom: 1.0),
-                                        child: new Image(
-                                            image: AssetImage(
-                                                'assets/ic_class.png'),
-                                            height: 18.0,
-                                            width: 25.0),
-                                      ),
-                                      Text('05 Lớp | ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.normal,
-                                              color: Hexcolor('#787878'))),
-                                      Container(
-                                        child: new Image(
-                                          image:
-                                              AssetImage('assets/ic_time.png'),
-                                          height: 18.0,
-                                          width: 25.0,
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 175),
+                                    child: Wrap(
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          child: new Image(
+                                              image: AssetImage(
+                                                  'assets/ic_students.png'),
+                                              height: 15,
+                                              width: 15),
                                         ),
-                                      ),
-                                      Text('07 ngày',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.normal)),
-                                    ],
+                                        Text('30M | ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                color: Hexcolor('#787878'))),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              bottom: 1.0),
+                                          child: new Image(
+                                              image: AssetImage(
+                                                  'assets/ic_class.png'),
+                                              height: 15.0,
+                                              width: 15.0),
+                                        ),
+                                        Text('05 Lớp | ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                color: Hexcolor('#787878'))),
+                                        Container(
+                                          child: new Image(
+                                            image: AssetImage(
+                                                'assets/ic_time.png'),
+                                            height: 15.0,
+                                            width: 15.0,
+                                          ),
+                                        ),
+                                        Text('07 ngày',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(
@@ -287,8 +288,12 @@ class TabListClassState extends State<TabListClassPage> {
                                       ),
                                     ),
                                   ),
-                                  Image(
-                                      image: AssetImage('assets/ic_line.png')),
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 175),
+                                    child: Image(
+                                        image:
+                                            AssetImage('assets/ic_line.png')),
+                                  ),
                                 ],
                               ),
                             ),
@@ -444,11 +449,15 @@ class TabListClassState extends State<TabListClassPage> {
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.normal)),
                                     SizedBox(height: 7.0),
-                                    Text('01/03/2020 - 20/03/2020',
-                                        style: TextStyle(
-                                            color: Hexcolor('#111111'),
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold)),
+                                    Container(
+                                      constraints:
+                                          BoxConstraints(maxWidth: 155),
+                                      child: Text('01/03/2020 - 20/03/2020',
+                                          style: TextStyle(
+                                              color: Hexcolor('#111111'),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
+                                    )
                                   ],
                                 )
                               ],

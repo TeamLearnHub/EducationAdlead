@@ -106,7 +106,7 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   print(" -------" + project.avatar);
                   return Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 16.0,
+                        horizontal: 8.0,
                         vertical: 8.0,
                       ),
                       child: Row(
@@ -148,54 +148,61 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                                   Row(
                                     children: <Widget>[
                                       SizedBox(width: 6.0),
-                                      Text('Kỹ năng quản lý thời gian',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.bold))
+                                      Container(
+                                        constraints:
+                                            BoxConstraints(maxWidth: 200),
+                                        child: Text('Kỹ năng quản lý thời gian',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold)),
+                                      )
                                     ],
                                   ),
                                   SizedBox(height: 10.0),
-                                  Wrap(
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        child: new Image(
-                                            image: AssetImage(
-                                                'assets/ic_students.png'),
-                                            height: 18,
-                                            width: 25),
-                                      ),
-                                      Text('30M | ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.normal,
-                                              color: Hexcolor('#787878'))),
-                                      Container(
-                                        margin:
-                                            const EdgeInsets.only(bottom: 1.0),
-                                        child: new Image(
-                                            image: AssetImage(
-                                                'assets/ic_class.png'),
-                                            height: 18.0,
-                                            width: 25.0),
-                                      ),
-                                      Text('05 Lớp | ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.normal,
-                                              color: Hexcolor('#787878'))),
-                                      Container(
-                                        child: new Image(
-                                          image:
-                                              AssetImage('assets/ic_time.png'),
-                                          height: 18.0,
-                                          width: 25.0,
+                                  Container(
+                                    constraints: BoxConstraints(maxWidth: 195),
+                                    child: Wrap(
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          child: new Image(
+                                              image: AssetImage(
+                                                  'assets/ic_students.png'),
+                                              height: 18,
+                                              width: 25),
                                         ),
-                                      ),
-                                      Text('07 ngày',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.normal)),
-                                    ],
+                                        Text('30M | ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                color: Hexcolor('#787878'))),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              bottom: 1.0),
+                                          child: new Image(
+                                              image: AssetImage(
+                                                  'assets/ic_class.png'),
+                                              height: 18.0,
+                                              width: 25.0),
+                                        ),
+                                        Text('05 Lớp | ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                color: Hexcolor('#787878'))),
+                                        Container(
+                                          child: new Image(
+                                            image: AssetImage(
+                                                'assets/ic_time.png'),
+                                            height: 18.0,
+                                            width: 25.0,
+                                          ),
+                                        ),
+                                        Text('07 ngày',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(
@@ -279,8 +286,11 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   SizedBox(width: 10.0),
                   Image(image: AssetImage('assets/ic_checkbox.png')),
                   SizedBox(width: 5.0),
-                  Text('Sắp xếp thời gian làm việc khoa học',
-                      style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 275),
+                    child: Text('Sắp xếp thời gian làm việc khoa học',
+                        style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  )
                 ],
               ),
               SizedBox(height: 15),
@@ -290,9 +300,12 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   SizedBox(width: 10.0),
                   Image(image: AssetImage('assets/ic_checkbox.png')),
                   SizedBox(width: 5.0),
-                  Text('Quản lý thời gian làm việc của bản thân',
-                      maxLines: 2,
-                      style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 275),
+                    child: Text('Quản lý thời gian làm việc của bản thân',
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  )
                 ],
               ),
               SizedBox(height: 10.0),
@@ -302,9 +315,12 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   SizedBox(width: 10.0),
                   Image(image: AssetImage('assets/ic_checkbox.png')),
                   SizedBox(width: 5.0),
-                  Text('Sắp xếp thời gian làm việc cho nhân sự',
-                      maxLines: 2,
-                      style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 275),
+                    child: Text('Sắp xếp thời gian làm việc cho nhân sự',
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  ),
                 ],
               ),
               SizedBox(height: 10.0),
@@ -314,9 +330,12 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   SizedBox(width: 10.0),
                   Image(image: AssetImage('assets/ic_checkbox.png')),
                   SizedBox(width: 5.0),
-                  Text('quản lý thời gian làm việc của bản thân',
-                      maxLines: 2,
-                      style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 275),
+                    child: Text('quản lý thời gian làm việc của bản thân',
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  )
                 ],
               ),
               SizedBox(height: 15.0),
@@ -341,9 +360,12 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   SizedBox(width: 10.0),
                   Image(image: AssetImage('assets/ic_checkbox.png')),
                   SizedBox(width: 5.0),
-                  Text('Thực hiện theo đúng lộ trình học tập',
-                      maxLines: 2,
-                      style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 275),
+                    child: Text('Thực hiện theo đúng lộ trình học tập',
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  )
                 ],
               ),
               SizedBox(height: 10.0),
@@ -353,9 +375,12 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
                   SizedBox(width: 10.0),
                   Image(image: AssetImage('assets/ic_checkbox.png')),
                   SizedBox(width: 5.0),
-                  Text('Hoàn thành đầy đủ các bài kiểm tra',
-                      maxLines: 2,
-                      style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 275),
+                    child: Text('Hoàn thành đầy đủ các bài kiểm tra',
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.black, fontSize: 16.5)),
+                  )
                 ],
               ),
               SizedBox(height: 30.0)
@@ -377,8 +402,7 @@ class _TabIntroductionState extends State<TabIntroductionPage> {
               introductionWidget(),
               SizedBox(height: 15.0),
               Container(
-                margin: const EdgeInsets.only(
-                    left: 25.0, right: 10.0),
+                margin: const EdgeInsets.only(left: 25.0, right: 10.0),
                 child: Image(image: AssetImage('assets/ic_line_big.png')),
               ),
               SizedBox(height: 15.0),

@@ -33,11 +33,13 @@ class ClassesDetailState extends State<ClassesDetailPage> {
   //ChewieController _chewieController;
   int _indexSelected = 0;
 
+
   @override
   void initState() {
     // TODO: implement initState
     _videoPlayerController1 =
         VideoPlayerController.network(classesModel.file_mp4);
+    print(classesModel.file_mp4);
     super.initState();
   }
 
@@ -71,7 +73,8 @@ class ClassesDetailState extends State<ClassesDetailPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image(image: AssetImage('assets/ic_classes_detail.png')),
+            Image(
+                image: AssetImage('assets/ic_classes_detail.png'), height: 100),
 //            GestureDetector(
 //              onTap: () {
 //                Navigator.of(context)
@@ -98,6 +101,7 @@ class ClassesDetailState extends State<ClassesDetailPage> {
 //                }));
 //              },
               child: Container(
+                constraints: BoxConstraints(maxWidth: 195),
                 margin: const EdgeInsets.only(left: 5.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -105,11 +109,10 @@ class ClassesDetailState extends State<ClassesDetailPage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        SizedBox(width: 6.0),
                         Text('Kỹ năng quản lý thời gian',
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16.0,
+                                fontSize: 14.0,
                                 fontWeight: FontWeight.bold))
                       ],
                     ),

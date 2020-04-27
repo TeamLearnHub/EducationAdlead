@@ -54,6 +54,7 @@ class _CommentPageState extends State<CommentPage> {
 
   Widget _buildCommentItem(String comment) {
     return Container(
+      constraints: BoxConstraints(maxWidth: 380),
       color: Hexcolor('FEFAF5'),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +62,7 @@ class _CommentPageState extends State<CommentPage> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(
-                left: 15.0, right: 10.0, bottom: 15.0, top: 15.0),
+                left: 5.0, right: 10.0, bottom: 15.0, top: 15.0),
             child: CircleAvatar(
               backgroundImage: AssetImage('assets/avartar.jpg'),
               radius: 30,
@@ -194,8 +195,8 @@ class _CommentPageState extends State<CommentPage> {
                       textAlign: TextAlign.justify,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 5,
-                      style:
-                      TextStyle(fontSize: 15.5, color: Hexcolor('#212121'))),
+                      style: TextStyle(
+                          fontSize: 15.5, color: Hexcolor('#212121'))),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
