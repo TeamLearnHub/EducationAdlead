@@ -6,6 +6,11 @@ import 'package:flutter_app/models/classes_model.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
 import 'package:flutter_app/views/course/my_course_detail.dart';
 import 'package:flutter_app/views/course/my_course_home.dart';
+import 'package:flutter_app/views/exam/exam.dart';
+import 'package:flutter_app/views/learning%20outcomes/learningoutcomes.dart';
+import 'package:flutter_app/views/learning%20route/learningroute.dart';
+import 'package:flutter_app/views/meeting%20online/meetting.dart';
+import 'package:flutter_app/views/notification/notification.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -202,23 +207,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget LearningWidget() {
-    return Stack(
-      alignment: Alignment.centerRight,
-      children: <Widget>[
-        Image(
-          image: AssetImage('assets/logo_learning.png'),
-          height: 225.0,
-          width: double.maxFinite,
-        ),
-        Container(
-          margin: const EdgeInsets.all(15.0),
-          child: Text('Lộ trình học tập ',
-              style: TextStyle(
-                  color: Hexcolor('#FFFFFF'),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0)),
-        )
-      ],
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return Lotrinhhoctap();
+        }));
+      },
+      child: Stack(
+        alignment: Alignment.centerRight,
+        children: <Widget>[
+          Image(
+            image: AssetImage('assets/logo_learning.png'),
+            height: 225.0,
+            width: double.maxFinite,
+          ),
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            child: Text('Lộ trình học tập ',
+                style: TextStyle(
+                    color: Hexcolor('#FFFFFF'),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0)),
+          )
+        ],
+      ),
     );
   }
 
@@ -635,7 +647,11 @@ class _HomePageState extends State<HomePage> {
               actions: <Widget>[
                 Stack(
                   children: <Widget>[
-                    IconButton(icon: ic_notification, onPressed: () {}),
+                    IconButton(icon: ic_notification, onPressed: () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context){
+                         return Notifiation();
+                       }));
+                    }),
                     Container(
                       width: 30,
                       height: 30,
@@ -731,7 +747,11 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: <Widget>[
                       GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Dethi();
+                            }));
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
@@ -766,7 +786,11 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: <Widget>[
                       GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Ketquahoctap();
+                            }));
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
@@ -798,7 +822,11 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: <Widget>[
                       GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Hoptructuyen();
+                            }));
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(

@@ -37,6 +37,7 @@ dependencies:
   flappy_search_bar: ^1.7.2
   custom_chewie : ^0.7.0
   flutter_rating_bar: ^3.0.1+1
+  image_picker: ^0.6.3+4
 
 module:
   androidX: true

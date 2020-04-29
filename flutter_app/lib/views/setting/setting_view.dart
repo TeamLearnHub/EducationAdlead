@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/feeedback/feedback.dart';
+import 'package:flutter_app/views/history/history.dart';
+import 'package:flutter_app/views/hlep/help.dart';
+import 'package:flutter_app/views/setting/settingdetail.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SettingApp extends StatelessWidget {
   @override
@@ -25,193 +30,204 @@ class _SettingPageSate extends State<SettingPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cài đặt chung'),
-        leading: IconButton(
-            icon: Icon(Icons.chevron_left),
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) {}));
-            }),
-      ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 80.0),
-              Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 10.0),
-                        child: Icon(Icons.settings),
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+              top: 0,
+              right: 0,
+              left: 0,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height/6.5,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: <Widget>[
+                    Image(image: AssetImage("assets/ic_toolbar.png"), fit: BoxFit.cover,),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height/13.5,
+                      right: 0,
+                      left: 0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                      Padding(padding: EdgeInsets.only(left: 15),
+                      child: Text("Cài đặt", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.height/30),),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 250.0),
-                        child: Text(
-                          'Cài đặt',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0),
+
+                        Padding(padding: EdgeInsets.only(right: 15),
+                        child: GestureDetector(
+                          onTap: (){},
+                          child: Image(image: AssetImage("assets/ic_notification.png"), fit: BoxFit.cover,),
                         ),
+                        )
+                        ],
                       ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
+                    )
+                  ],
+                )
+              )),
+          Positioned(
+              top: MediaQuery.of(context).size.height/6.5,
+              left: 0,
+              right: 0,
+              child: Padding(padding: EdgeInsets.all(15),
+              child: Column(
+                children: <Widget>[
+              GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return Setting();
+                      }
+                      ));
+                    },
+                    child:   SizedBox(
+                      height:MediaQuery.of(context).size.height/14,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image(image: AssetImage("assets/ic_setting.png"), height:MediaQuery.of(context).size.height/20,color: Hexcolor('#434343')),
+                              SizedBox(width: 10,),
+                              Text("Cài đặt chung", style: TextStyle(color: Hexcolor('#434343'), fontSize:MediaQuery.of(context).size.height/43),),
+                            ],
+                          ),
+                          Image(image: AssetImage("assets/ic_next.png"))
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(height: 70.0),
-              Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 10.0),
-                        child: Icon(Icons.settings),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 230.0),
-                        child: Text(
-                          'Lịch học',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
+                  Divider(
+                    color: Colors.brown,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 70.0,
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 10.0),
-                        child: Icon(Icons.settings),
+                  GestureDetector(
+                    onTap: (){},
+                    child:   SizedBox(
+                      height:MediaQuery.of(context).size.height/14,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image(image: AssetImage("assets/ic_meeting.png"), height:MediaQuery.of(context).size.height/20,color: Hexcolor('#434343')),
+                              SizedBox(width: 10,),
+                              Text("Lịch học", style: TextStyle(color: Hexcolor('#434343'), fontSize:MediaQuery.of(context).size.height/43),),
+                            ],
+                          ),
+                          Image(image: AssetImage("assets/ic_next.png"))
+                        ],
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 220.0),
-                        child: Text(
-                          'Giao dịch',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(height: 70.0),
-              Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 10.0),
-                        child: Icon(Icons.settings),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 230.0),
-                        child: Text(
-                          'Trợ giúp',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
+                  Divider(
+                    color: Colors.brown,
                   ),
-                ),
-              ),
-              SizedBox(height: 70.0),
-              Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 10.0),
-                        child: Icon(Icons.settings),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return LichSu();
+                      }));
+
+                    },
+                    child:   SizedBox(
+                      height:MediaQuery.of(context).size.height/14,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image(image: AssetImage("assets/ic_meeting.png"), height:MediaQuery.of(context).size.height/20,color: Hexcolor('#434343')),
+                              SizedBox(width: 10,),
+                              Text("Giao dịch", style: TextStyle(color: Hexcolor('#434343'), fontSize:MediaQuery.of(context).size.height/43),),
+                            ],
+                          ),
+                          Image(image: AssetImage("assets/ic_next.png"))
+                        ],
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 240.0),
-                        child: Text(
-                          'Góp ý ',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(height: 70.0),
-              Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(width: 4.0, color: Color(0xFF000000)))),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 10.0),
-                        child: Icon(Icons.settings),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 5.0, right: 200.0),
-                        child: Text(
-                          'Đăng xuất',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
+                  Divider(
+                    color: Colors.brown,
                   ),
-                ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                        return TroGiup();
+                      }));
+                    },
+                    child:   SizedBox(
+                      height:MediaQuery.of(context).size.height/14,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image(image: AssetImage("assets/ic_meeting.png"), height:MediaQuery.of(context).size.height/20,color: Hexcolor('#434343')),
+                              SizedBox(width: 10,),
+                              Text("Trợ giúp", style: TextStyle(color: Hexcolor('#434343'), fontSize:MediaQuery.of(context).size.height/43),),
+                            ],
+                          ),
+                          Image(image: AssetImage("assets/ic_next.png"))
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.brown,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return FeedBack();
+                      }));
+                    },
+                    child:   SizedBox(
+                      height:MediaQuery.of(context).size.height/14,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image(image: AssetImage("assets/ic_meeting.png"), height:MediaQuery.of(context).size.height/20,color: Hexcolor('#434343')),
+                              SizedBox(width: 10,),
+                              Text("Góp ý", style: TextStyle(color: Hexcolor('#434343'), fontSize:MediaQuery.of(context).size.height/43),),
+                            ],
+                          ),
+                          Image(image: AssetImage("assets/ic_next.png"))
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.brown,
+                  ),
+                  GestureDetector(
+                    onTap: (){},
+                    child:   SizedBox(
+                      height:MediaQuery.of(context).size.height/14,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image(image: AssetImage("assets/ic_meeting.png",), height:MediaQuery.of(context).size.height/20,color: Colors.red),
+                              SizedBox(width: 10,),
+                              Text("Đăng xuất", style: TextStyle(color: Colors.red, fontSize:MediaQuery.of(context).size.height/43),),
+                            ],
+                          ),
+                          Image(image: AssetImage("assets/ic_next.png"))
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.brown,
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      ),
+
+              ))
+        ],
+      )
     );
   }
 }

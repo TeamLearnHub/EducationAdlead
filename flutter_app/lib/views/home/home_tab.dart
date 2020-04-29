@@ -34,7 +34,7 @@ class HomeTabState extends State<HomeTabPage> {
     SearchViewPage(),
     MyCoursePage(),
     MyAccountApp(),
-    MyHomePage(),
+    SettingPage()
   ];
 
   @override
