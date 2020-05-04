@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/util/Preferences.dart';
+import 'package:flutter_app/views/exam/exam.dart';
+import 'package:flutter_app/views/learning%20outcomes/learningoutcomes.dart';
+import 'package:flutter_app/views/learning%20route/learningroute.dart';
+import 'package:flutter_app/views/meeting%20online/meetting.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class MyAccountApp extends StatelessWidget {
@@ -94,7 +97,9 @@ class MyAccountSate extends State<MyAccountPage> {
             children: <Widget>[
               GestureDetector(
                   onTap: () {
-                    Preferences.clear();
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return Lotrinhhoctap();
+                    }));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -107,7 +112,7 @@ class MyAccountSate extends State<MyAccountPage> {
                         Text('Lộ trình học tập',
                             style: TextStyle(
                                 fontSize: 18.0, color: Hexcolor('#434343'))),
-                        SizedBox(width: 160.0),
+                        SizedBox(width: 110.0),
                         Image(image: AssetImage('assets/ic_next.png'))
                       ],
                     ),
@@ -120,7 +125,11 @@ class MyAccountSate extends State<MyAccountPage> {
           Row(
             children: <Widget>[
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return Dethi();
+                    }));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
@@ -132,7 +141,7 @@ class MyAccountSate extends State<MyAccountPage> {
                         Text('Đề thi',
                             style: TextStyle(
                                 fontSize: 18.0, color: Hexcolor('#434343'))),
-                        SizedBox(width: 245.0),
+                        SizedBox(width: 200.0),
                         Image(image: AssetImage('assets/ic_next.png'))
                       ],
                     ),
@@ -145,7 +154,11 @@ class MyAccountSate extends State<MyAccountPage> {
           Row(
             children: <Widget>[
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return Ketquahoctap();
+                    }));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
@@ -157,7 +170,7 @@ class MyAccountSate extends State<MyAccountPage> {
                         Text('Kết quả học tập',
                             style: TextStyle(
                                 fontSize: 18.0, color: Hexcolor('#434343'))),
-                        SizedBox(width: 160.0),
+                        SizedBox(width: 110.0),
                         Image(image: AssetImage('assets/ic_next.png'))
                       ],
                     ),
@@ -170,7 +183,11 @@ class MyAccountSate extends State<MyAccountPage> {
           Row(
             children: <Widget>[
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return Hoptructuyen();
+                    }));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
@@ -182,7 +199,7 @@ class MyAccountSate extends State<MyAccountPage> {
                         Text('Họp trực tuyến',
                             style: TextStyle(
                                 fontSize: 18.0, color: Hexcolor('#434343'))),
-                        SizedBox(width: 165.0),
+                        SizedBox(width: 110.0),
                         Image(image: AssetImage('assets/ic_next.png'))
                       ],
                     ),
