@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/hlep/hlepdetails.dart';
+import 'package:flutter_app/views/help/hlepdetails.dart';
 import 'package:image_picker/image_picker.dart';
 class TroGiup extends StatefulWidget {
   @override

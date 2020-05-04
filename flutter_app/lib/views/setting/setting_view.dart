@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/feeedback/feedback.dart';
+import 'package:flutter_app/views/help/help.dart';
 import 'package:flutter_app/views/history/history.dart';
-import 'package:flutter_app/views/hlep/help.dart';
 import 'package:flutter_app/views/setting/settingdetail.dart';
 import 'package:hexcolor/hexcolor.dart';
 
