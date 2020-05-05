@@ -21,33 +21,44 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
   TextEditingController cntrlPassword = TextEditingController();
 
   LoginPreseneter _preseneter;
+  bool isLoggedIn = false;
+  String name = '';
+
+  doLogin(String username, String password) async {
+    try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('username', username);
+
+    } catch (e) {}
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     _preseneter = LoginPreseneter(this);
+    autoLogin();
     super.initState();
   }
 
-  Future<String> _nameSaver() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('name2', 'tien dat');
-    prefs.setString('school2', 'bach khoa ');
-    return 'saved';
-  }
-
-  _nameRetriever() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final name = prefs.getString('name2') ?? '';
-    final school = prefs.getString('school2') ?? '';
-
-    print(name);
-    print(school);
+  void autoLogin() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String userId = prefs.getString('username');
+    print("LoginPage" + userId);
+    if (userId != null) {
+      setState(() {
+        isLoggedIn = true;
+        name = userId;
+      });
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        Preferences.clear();
+        return HomeTabApp();
+      }));
+      return;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     var assetsImage = new AssetImage('assets/ic_logo.png');
     var image = new Image(image: assetsImage, width: 200.0, height: 120.0);
     // TODO: implement build
@@ -116,9 +127,8 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        _nameSaver().then((_) {
-                          _nameRetriever();
-                        });
+                        doLogin(
+                            cntrlEmail.toString(), cntrlPassword.toString());
                       });
 //                      Preferences.setToken("ojsjjsjjsjs");
 //                    print('hello token = ' +Preferences.getToken());

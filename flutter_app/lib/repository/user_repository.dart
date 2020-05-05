@@ -6,6 +6,7 @@ import 'package:flutter_app/service/Network_service.dart';
 import 'package:flutter_app/util/Preferences.dart';
 import 'package:flutter_app/util/Request_exception.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class UserRepository {
   Observable<void> login(String email, String password);
@@ -27,11 +28,10 @@ class UserRepositoryImpl implements UserRepository {
         throw new RequestException(""
             "Login error , code : ${res.statusCode},${res.reasonPhrase}");
       }
+      Preferences.setUserName(email);
       final String token = _networkService.convertJsonMap(res.body)["token"];
       return Preferences.setToken(token);
-
     });
-
   }
 
   @override

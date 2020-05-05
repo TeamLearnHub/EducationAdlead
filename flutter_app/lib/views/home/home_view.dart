@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
+import 'package:flutter_app/util/Preferences.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
 import 'package:flutter_app/views/course/my_course_detail.dart';
 import 'package:flutter_app/views/course/my_course_home.dart';
@@ -208,8 +209,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget LearningWidget() {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context){
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
           return Lotrinhhoctap();
         }));
       },
@@ -590,6 +591,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     fetchClasses();
+    print(Preferences.getUserName());
   }
 
   void choice(String choice) {
@@ -647,11 +649,14 @@ class _HomePageState extends State<HomePage> {
               actions: <Widget>[
                 Stack(
                   children: <Widget>[
-                    IconButton(icon: ic_notification, onPressed: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context){
-                         return Notifiation();
-                       }));
-                    }),
+                    IconButton(
+                        icon: ic_notification,
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Notifiation();
+                          }));
+                        }),
                     Container(
                       width: 30,
                       height: 30,
@@ -748,7 +753,8 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
                               return Dethi();
                             }));
                           },
@@ -787,7 +793,8 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
                               return Ketquahoctap();
                             }));
                           },
@@ -823,7 +830,8 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
                               return Hoptructuyen();
                             }));
                           },
