@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
+import 'package:flutter_app/util/network_util.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
@@ -34,23 +35,16 @@ class AllClassesHomeState extends State<AllClassesHomePage> {
   }
 
   List<ClassesModel> _listClasses = List<ClassesModel>();
-
-  List<ClassesModel> parseClasses(String responseBody) {
-    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    _listClasses = parsed
-        .map<ClassesModel>((json) => ClassesModel.fromJson(json))
-        .toList();
-    return _listClasses;
-  }
+  NetworkUtil _netUtil = new NetworkUtil();
 
   Future<List<ClassesModel>> fetchClasses() async {
     final response =
-        await prefix0.get('http://demo4855049.mockable.io/gethotvideo');
-    if (response.statusCode == 200) {
-      return parseClasses(response.body);
-    } else {
-      throw Exception('Unable to fetch products from the REST API');
-    }
+        await _netUtil.get('http://demo4855049.mockable.io/gethotvideo');
+    print("HomePage fetchClasses : " + response.toString());
+    _listClasses = response
+        .map<ClassesModel>((json) => ClassesModel.fromJson(json))
+        .toList();
+    return _listClasses.sublist(0, 4);
   }
 
   var listClasses = [
