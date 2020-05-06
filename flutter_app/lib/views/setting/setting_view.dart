@@ -4,6 +4,7 @@ import 'package:flutter_app/views/feeedback/feedback.dart';
 import 'package:flutter_app/views/help/help.dart';
 import 'package:flutter_app/views/history/history.dart';
 import 'package:flutter_app/views/login/Login_view.dart';
+import 'package:flutter_app/views/schedule/schedule_view.dart';
 import 'package:flutter_app/views/setting/settingdetail.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -143,7 +144,12 @@ class _SettingPageSate extends State<SettingPage> {
                     color: Colors.brown,
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return LichHocScreen();
+                          }));
+                    },
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height / 14,
                       child: Row(
