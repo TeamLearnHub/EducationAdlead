@@ -28,7 +28,6 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('username', username);
-
     } catch (e) {}
   }
 
@@ -73,8 +72,10 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: 40.0),
+                  SizedBox(height: 90.0),
                   Align(alignment: Alignment.center, child: image),
+                  Text('Grow Your People',
+                      style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
