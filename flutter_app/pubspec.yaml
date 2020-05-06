@@ -38,6 +38,9 @@ dependencies:
   custom_chewie : ^0.7.0
   flutter_rating_bar: ^3.0.1+1
   image_picker: ^0.6.3+4
+  auto_size_text: ^2.1.0
+  scoped_model: ^1.0.1
+  flutter_datetime_picker: ^1.2.5
 
 module:
   androidX: true
