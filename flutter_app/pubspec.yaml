@@ -35,12 +35,13 @@ dependencies:
   hexcolor:  ^1.0.1
   percent_indicator: ^2.1.1
   flappy_search_bar: ^1.7.2
-  custom_chewie : ^0.7.0
+  custom_chewie: ^0.7.0
   flutter_rating_bar: ^3.0.1+1
   image_picker: ^0.6.3+4
   auto_size_text: ^2.1.0
   scoped_model: ^1.0.1
   flutter_datetime_picker: ^1.2.5
+  flutter_launcher_icons: ^0.7.3
 
 module:
   androidX: true
@@ -50,6 +51,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/ic_logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
