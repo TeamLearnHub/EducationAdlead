@@ -42,22 +42,6 @@ class Preferences {
     return preferences.getString(_userName);
   }
 
-   Future<String> _nameSaver(String userName) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('name2', userName);
-    prefs.setString('school2', 'bach khoa ');
-    return 'saved';
-  }
-
-  static _nameRetriever() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final name = prefs.getString('name2') ?? '';
-    final school = prefs.getString('school2') ?? '';
-
-    print(name);
-    print(school);
-  }
-
   static clear() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.remove(_token);

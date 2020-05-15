@@ -43,6 +43,7 @@ class _LoginPageSate extends State<LoginPage> implements LoginContact {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String userId = prefs.getString('username');
     print("LoginPage" + userId);
+
     if (userId != null) {
       setState(() {
         isLoggedIn = true;
