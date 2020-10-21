@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
+import 'package:flutter_app/util/color.dart';
 import 'package:flutter_app/views/classes/classes_detail.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as prefix0;
 
 class AllClassesHomeApp extends StatelessWidget {

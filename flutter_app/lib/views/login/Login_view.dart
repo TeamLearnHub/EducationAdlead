@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/util/Preferences.dart';
+import 'package:flutter_app/util/color.dart';
 import 'package:flutter_app/views/home/home_tab.dart';
 import 'package:flutter_app/views/login/login_contact.dart';
 import 'package:flutter_app/views/login/login_presenter.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {

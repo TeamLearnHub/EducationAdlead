@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/util/color.dart';
 import 'package:flutter_app/views/account/my_account.dart';
 import 'package:flutter_app/views/course/my_course.dart';
 import 'package:flutter_app/views/home/home_view.dart';
 import 'package:flutter_app/views/search/search_view.dart';
 import 'package:flutter_app/views/setting/setting_view.dart';
-import 'package:flutter_app/views/test/test.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class HomeTabApp extends StatelessWidget {
   @override

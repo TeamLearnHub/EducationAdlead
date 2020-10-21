@@ -32,7 +32,6 @@ dependencies:
   logger: any
   flutter_calendar_carousel: ^1.4.10
   flutter_cache_manager: ^0.3.2
-  hexcolor:  ^1.0.1
   percent_indicator: ^2.1.1
   flappy_search_bar: ^1.7.2
   custom_chewie : ^0.7.0

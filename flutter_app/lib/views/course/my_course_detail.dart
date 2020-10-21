@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/models/classes_model.dart';
-import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_app/util/color.dart';
 import 'package:video_player/video_player.dart';
 
 import 'my_course_detail_tab.dart';
